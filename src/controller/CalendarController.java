@@ -154,17 +154,20 @@ public class CalendarController extends Controller implements Initializable {
         clearCalendarRange();
         int lastDayOfMonth = getLastDayOfMonth(month, year);
         int firstDayOfWeek = getFirstDayOfWeek(month, year);
-        System.out.println(month + ": " + year);
         int day = 1;
         for (Node node : gridPane.getChildren()) {
-            if (node instanceof Label) {
-                if(day == lastDayOfMonth + 1)
-                    break;
-                if(GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) + 1 > lastDayOfMonth + firstDayOfWeek)
-                    continue;
-                if(GridPane.getRowIndex(node) > 0 || GridPane.getColumnIndex(node) >= firstDayOfWeek) {
-                    ((Label) node).setText(String.valueOf(GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) - firstDayOfWeek + 1));
-                    day++;
+            if (node instanceof Pane) {
+                for(Node p : ((Pane) node).getChildren()) {
+                    if (p instanceof Label) {
+                        if (day == lastDayOfMonth + 1)
+                            break;
+                        if (GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) + 1 > lastDayOfMonth + firstDayOfWeek)
+                            continue;
+                        if (GridPane.getRowIndex(node) > 0 || GridPane.getColumnIndex(node) >= firstDayOfWeek) {
+                            ((Label) p).setText(String.valueOf(GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) - firstDayOfWeek + 1));
+                            day++;
+                        }
+                    }
                 }
             }
         }
