@@ -175,8 +175,11 @@ public class CalendarController extends Controller implements Initializable {
 
     private void clearCalendarRange() {
         for(Node node : gridPane.getChildren()) {
-            if(node instanceof Label) {
-                ((Label) node).setText("");
+            if(node instanceof Pane) {
+                for(Node p : ((Pane) node).getChildren())
+                    if (p instanceof Label) {
+                        ((Label) p).setText("");
+                    }
             }
         }
     }
