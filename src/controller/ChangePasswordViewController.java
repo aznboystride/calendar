@@ -24,7 +24,7 @@ public class ChangePasswordViewController extends Controller {
             if(newPass.getText().equals(confirmPass.getText())) {
                 User.GetInstance().setPassword(newPass.getText());
                 db.Update(User.GetInstance());
-                LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
+                LoadFXML(event, "Calendar App - CalendarView", "/fxml/Calendar.fxml");
             } else {
                 new AlertBox("Passwords Don't Match!");
             }

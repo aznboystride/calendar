@@ -29,7 +29,7 @@ public class MainMenuViewController extends Controller {
             if(user.getUserName().equalsIgnoreCase(username.getText())) {
                 if(user.getPassword().equals(password.getText())) {
                     User.GetInstance().setUserAccount(user);
-                    LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
+                    LoadFXML(event, "Calendar App - CalendarView", "/fxml/Calendar.fxml");
                     return;
                 }
                 break;
