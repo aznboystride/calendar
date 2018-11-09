@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CalendarController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CalendarController">
    <top>
       <AnchorPane prefHeight="132.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -33,8 +33,8 @@
             <RadioButton layoutX="95.0" layoutY="48.0" mnemonicParsing="false" text="Weekly View" />
             <RadioButton layoutX="367.0" layoutY="48.0" mnemonicParsing="false" text="Daily View" />
             <RadioButton layoutX="224.0" layoutY="48.0" mnemonicParsing="false" text="Calendar View" />
-            <ComboBox fx:id="month" layoutX="149.0" layoutY="77.0" prefWidth="150.0" promptText="Month" />
-            <ComboBox fx:id="year" layoutX="300.0" layoutY="77.0" prefWidth="150.0" promptText="Year" />
+            <ComboBox fx:id="month" layoutX="149.0" layoutY="77.0" onAction="#monthBtn" prefWidth="150.0" promptText="Month" />
+            <ComboBox fx:id="year" layoutX="300.0" layoutY="77.0" onAction="#yearBtn" prefWidth="150.0" promptText="Year" />
          </children>
       </AnchorPane>
    </top>
