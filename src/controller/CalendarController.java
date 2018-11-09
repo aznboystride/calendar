@@ -114,11 +114,14 @@ public class CalendarController extends Controller implements Initializable {
         int lastDayOfMonth = CalendarHelper.getLastDayOfMonth(month, year);
         int firstDayOfWeek = CalendarHelper.getFirstDayOfWeek(month, year);
         int day = 1;
+        int preCounter = 0;
         for (Node node : gridPane.getChildren()) {
             if (node instanceof Pane) {
                 for(Node p : ((Pane) node).getChildren()) {
                     if (p instanceof Label) {
-                        if (day == lastDayOfMonth + 1)
+                        if (GridPane.getRowIndex(node) == 0 && GridPane.getColumnIndex(node) < firstDayOfWeek)
+                            ((Label) p).setText(String.valueOf(lastDayOfMonth - firstDayOfWeek + preCounter++ + 1));
+                        if (day == lastDayOfMonth + firstDayOfWeek + 1)
                             break;
                         if (GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) + 1 > lastDayOfMonth + firstDayOfWeek)
                             continue;
