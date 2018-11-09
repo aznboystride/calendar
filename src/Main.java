@@ -12,7 +12,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws java.io.IOException {
-        UserAccountDOA.GetInstance().DropTable();
         stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenuView.fxml"));
         primaryStage.setTitle("Calendar App - Main Menu");
