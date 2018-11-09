@@ -4,12 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import java.net.URL;
 import java.sql.Date;
@@ -38,6 +38,7 @@ public class CalendarController extends Controller implements Initializable {
         initializeGridPaneCells();
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
         setGridPaneConstraints();
+        setCalendarColor(Color.color(.9, .4,.4));
         borderPane.setCenter(gridPane);
     }
 
@@ -66,7 +67,6 @@ public class CalendarController extends Controller implements Initializable {
     private Pane getCalendarPane(Label label) {
         Pane pane = new Pane();
         pane.getChildren().add(label);
-        pane.setStyle("-fx-background-color: cornsilk");
         return pane;
     }
 
@@ -180,6 +180,17 @@ public class CalendarController extends Controller implements Initializable {
                     if (p instanceof Label) {
                         ((Label) p).setText("");
                     }
+            }
+        }
+    }
+
+    private void setCalendarColor(Color color) {
+        for(Node node : gridPane.getChildren()) {
+            if(node instanceof Pane) {
+                for(Node p : ((Pane) node).getChildren()) {
+                    if(p instanceof Label && ((Label) p).getText().length() > 0)
+                        ((Pane) node).setBackground(new Background(new BackgroundFill(color, null, null)));
+                }
             }
         }
     }
