@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
@@ -13,6 +14,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
+
 import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
@@ -132,6 +134,7 @@ public class CalendarController extends Controller implements Initializable {
     }
 
     private void setCalendarRange(String month, int year) {
+        clearCalendarRange();
         int lastDayOfMonth = getLastDayOfMonth(month, year);
         int firstDayOfWeek = getFirstDayOfWeek(month, year);
         int day = 1;
@@ -147,5 +150,41 @@ public class CalendarController extends Controller implements Initializable {
                 }
             }
         }
+    }
+
+    private void clearCalendarRange() {
+        for(Node node : gridPane.getChildren()) {
+            if(node instanceof Label) {
+                ((Label) node).setText("1");
+            }
+        }
+        System.out.println("\nClear");
+        for(Node node : gridPane.getChildren()) {
+            if(node instanceof Label) {
+                System.out.print(((Label) node).getText() + " ");
+            }
+        }
+    }
+
+    public void yearBtn(ActionEvent event) {
+        setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
+        borderPane.setCenter(gridPane);
+        System.out.println("\nNew");
+        for(Node node : gridPane.getChildren()) {
+            if(node instanceof Label) {
+                System.out.print(((Label) node).getText() + " ");
+            }
+        }
+        System.out.println("\nOld");
+        for(Node node : ((GridPane) (borderPane.getCenter())).getChildren()) {
+            if(node instanceof Label) {
+                System.out.print(((Label) node).getText() + " ");
+            }
+        }
+    }
+
+    public void monthBtn(ActionEvent event) {
+        setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
+        borderPane.setCenter(gridPane);
     }
 }
