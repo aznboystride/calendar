@@ -19,6 +19,8 @@ public class CalendarController extends Controller implements Initializable {
     @FXML
     private BorderPane borderPane;
 
+    private GridPane gridPane;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         GridPane gridPane = getCalendarGridPane();
@@ -26,7 +28,7 @@ public class CalendarController extends Controller implements Initializable {
     }
 
     private GridPane getCalendarGridPane() {
-        GridPane gridPane = new GridPane();
+        gridPane = new GridPane();
         Label label;
         for(int col = 0; col < 7; col++) {
             for(int row = 0; row < 6; row++) {

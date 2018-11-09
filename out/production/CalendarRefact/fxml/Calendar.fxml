@@ -9,7 +9,7 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CalendarController">
    <top>
-      <AnchorPane prefHeight="179.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="132.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar prefHeight="29.0" prefWidth="600.0">
               <menus>
@@ -30,11 +30,11 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <RadioButton layoutX="95.0" layoutY="57.0" mnemonicParsing="false" text="Weekly View" />
-            <RadioButton layoutX="367.0" layoutY="57.0" mnemonicParsing="false" text="Daily View" />
-            <RadioButton layoutX="225.0" layoutY="57.0" mnemonicParsing="false" text="Calendar View" />
-            <ComboBox layoutX="95.0" layoutY="94.0" prefWidth="150.0" promptText="Month" />
-            <ComboBox layoutX="305.0" layoutY="94.0" prefWidth="150.0" promptText="Year" />
+            <RadioButton layoutX="95.0" layoutY="48.0" mnemonicParsing="false" text="Weekly View" />
+            <RadioButton layoutX="367.0" layoutY="48.0" mnemonicParsing="false" text="Daily View" />
+            <RadioButton layoutX="224.0" layoutY="48.0" mnemonicParsing="false" text="Calendar View" />
+            <ComboBox layoutX="149.0" layoutY="77.0" prefWidth="150.0" promptText="Month" />
+            <ComboBox layoutX="300.0" layoutY="77.0" prefWidth="150.0" promptText="Year" />
          </children>
       </AnchorPane>
    </top>
