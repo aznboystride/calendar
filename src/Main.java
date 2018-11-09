@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws java.io.IOException {
         stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenuView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Calendar.fxml"));
         primaryStage.setTitle("Calendar App - Main Menu");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
