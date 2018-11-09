@@ -40,7 +40,7 @@ public class CalendarController extends Controller implements Initializable {
         initializeGridPaneCells();
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
         setGridPaneConstraints();
-        setCalendarColor(Color.color(.9, .4,.4));
+        //setCalendarColor(Color.color(.9, .4,.4));
         borderPane.setCenter(gridPane);
     }
 
@@ -112,6 +112,7 @@ public class CalendarController extends Controller implements Initializable {
     private void setCalendarRange(String month, int year) {
         clearCalendarRange();
         int lastDayOfMonth = CalendarHelper.getLastDayOfMonth(month, year);
+        int lastDayOfLastMonth = CalendarHelper.getLastDayOfLastMonth(month, year);
         int firstDayOfWeek = CalendarHelper.getFirstDayOfWeek(month, year);
         int day = 1;
         int preCounter = 0;
@@ -119,8 +120,10 @@ public class CalendarController extends Controller implements Initializable {
             if (node instanceof Pane) {
                 for(Node p : ((Pane) node).getChildren()) {
                     if (p instanceof Label) {
-                        if (GridPane.getRowIndex(node) == 0 && GridPane.getColumnIndex(node) < firstDayOfWeek)
-                            ((Label) p).setText(String.valueOf(lastDayOfMonth - firstDayOfWeek + ++preCounter));
+                        if (GridPane.getRowIndex(node) == 0 && GridPane.getColumnIndex(node) < firstDayOfWeek) {
+                            ((Label) p).setText(String.valueOf(lastDayOfLastMonth - firstDayOfWeek + ++preCounter));
+                            ((Label) p).setStyle("-fx-text-fill: gray");
+                        }
                         if (day == lastDayOfMonth + firstDayOfWeek + 1)
                             break;
                         if (GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) + 1 > lastDayOfMonth + firstDayOfWeek)
