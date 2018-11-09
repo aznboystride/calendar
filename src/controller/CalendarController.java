@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
+import helper.CalendarHelper;
+
 public class CalendarController extends Controller implements Initializable {
 
     @FXML
@@ -107,53 +109,10 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
-    private int getMonthFromString(String month) throws ParseException {
-        Calendar calendar = Calendar.getInstance();
-        Date date = new Date(new SimpleDateFormat("MMMM").parse(month).getTime());
-        calendar.setTime(date);
-        return calendar.get(Calendar.MONTH) + 1;
-    }
-
-    private int getFirstDayOfWeek(String month, int year) {
-        int monthNum = 0;
-        try {
-            monthNum = getMonthFromString(month);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar calendar = Calendar.getInstance();
-        Date date = null;
-        try {
-            date = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(Integer.toString(year) + "-" + Integer.toString(monthNum) + "-01").getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        calendar.setTime(date);
-        return calendar.get(Calendar.DAY_OF_WEEK);
-    }
-
-    private int getLastDayOfMonth(String month, int year) {
-        int monthNum = 0;
-        try {
-            monthNum = getMonthFromString(month);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar calendar = Calendar.getInstance();
-        Date date = null;
-        try {
-            date = new Date(new SimpleDateFormat("yyyy-M-dd").parse(Integer.toString(year) + "-" + Integer.toString(monthNum) + "-01").getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        calendar.setTime(date);
-        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-    }
-
     private void setCalendarRange(String month, int year) {
         clearCalendarRange();
-        int lastDayOfMonth = getLastDayOfMonth(month, year);
-        int firstDayOfWeek = getFirstDayOfWeek(month, year);
+        int lastDayOfMonth = CalendarHelper.getLastDayOfMonth(month, year);
+        int firstDayOfWeek = CalendarHelper.getFirstDayOfWeek(month, year);
         int day = 1;
         for (Node node : gridPane.getChildren()) {
             if (node instanceof Pane) {
