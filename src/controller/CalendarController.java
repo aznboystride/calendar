@@ -9,10 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import java.net.URL;
 import java.sql.Date;
@@ -46,19 +43,35 @@ public class CalendarController extends Controller implements Initializable {
 
     private void initializeGridPaneCells() {
         gridPane = new GridPane();
+        Pane pane;
         Label label;
         for (int col = 0; col < 7; col++) {
             for (int row = 0; row < 6; row++) {
-                label = new Label();
-                label.setPadding(new Insets(10, 10, 10, 10));
-                label.setFont(Font.font("verdana", 10));
-                gridPane.add(label, col, row);
+                label = getCalendarLabel();
+                pane = getCalendarPane(label);
                 GridPane.setHalignment(label, HPos.RIGHT);
+                gridPane.add(pane, col, row);
             }
         }
     }
 
+    private Label getCalendarLabel() {
+        Label label = new Label();
+        label.setLayoutX(75);
+        label.setLayoutY(5);
+        label.setFont(Font.font("verdana", 10));
+        return label;
+    }
+
+    private Pane getCalendarPane(Label label) {
+        Pane pane = new Pane();
+        pane.getChildren().add(label);
+        pane.setStyle("-fx-background-color: cornsilk");
+        return pane;
+    }
+
     private void setGridPaneConstraints() {
+        gridPane.setGridLinesVisible(true);
         gridPane.setAlignment(Pos.CENTER);
         ColumnConstraints columnConstraints = new ColumnConstraints(83);
         RowConstraints rowConstraints = new RowConstraints(42);
