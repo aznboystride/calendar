@@ -14,7 +14,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
-
 import java.net.URL;
 import java.sql.Date;
 import java.text.ParseException;
@@ -56,16 +55,21 @@ public class CalendarController extends Controller implements Initializable {
                 gridPane.add(label, col, row);
                 GridPane.setHalignment(label, HPos.RIGHT);
             }
-            gridPane.getColumnConstraints().add(new ColumnConstraints(83));
-            if (col == 6)
-                continue;
-            gridPane.getRowConstraints().add(new RowConstraints(42));
         }
     }
 
     private void setGridPaneConstraints() {
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.setGridLinesVisible(true);
+        ColumnConstraints columnConstraints = new ColumnConstraints(83);
+        RowConstraints rowConstraints = new RowConstraints(42);
+        rowConstraints.setPercentHeight(50);
+        columnConstraints.setPercentWidth(50);
+        for (int col = 0; col < 7; col++) {
+            gridPane.getColumnConstraints().add(columnConstraints);
+            if (col == 6)
+                break;
+            gridPane.getRowConstraints().add(rowConstraints);
+        }
     }
 
     private void initializeYearDropDown() {
