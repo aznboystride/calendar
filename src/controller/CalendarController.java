@@ -137,8 +137,13 @@ public class CalendarController extends Controller implements Initializable {
         int day = 1;
         for (Node node : gridPane.getChildren()) {
             if (node instanceof Label) {
-                if((GridPane.getRowIndex(node) > 0 || GridPane.getColumnIndex(node) >= firstDayOfWeek - 1) && day <= lastDayOfMonth) {
-                    ((Label)node).setText(String.valueOf(day++));
+                if(day == lastDayOfMonth + 1)
+                    break;
+                if(GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) + 1 > lastDayOfMonth + firstDayOfWeek)
+                    continue;
+                if(GridPane.getRowIndex(node) > 0 || GridPane.getColumnIndex(node) >= firstDayOfWeek) {
+                    ((Label) node).setText(String.valueOf(GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) - firstDayOfWeek + 1));
+                    day++;
                 }
             }
         }
