@@ -56,7 +56,7 @@ public class CalendarController extends Controller implements Initializable {
                 gridPane.add(label, col, row);
                 GridPane.setHalignment(label, HPos.RIGHT);
             }
-            gridPane.getColumnConstraints().add(new ColumnConstraints(80));
+            gridPane.getColumnConstraints().add(new ColumnConstraints(83));
             if (col == 6)
                 continue;
             gridPane.getRowConstraints().add(new RowConstraints(42));
@@ -137,6 +137,7 @@ public class CalendarController extends Controller implements Initializable {
         clearCalendarRange();
         int lastDayOfMonth = getLastDayOfMonth(month, year);
         int firstDayOfWeek = getFirstDayOfWeek(month, year);
+        System.out.println(month + ": " + year);
         int day = 1;
         for (Node node : gridPane.getChildren()) {
             if (node instanceof Label) {
@@ -155,36 +156,18 @@ public class CalendarController extends Controller implements Initializable {
     private void clearCalendarRange() {
         for(Node node : gridPane.getChildren()) {
             if(node instanceof Label) {
-                ((Label) node).setText("1");
-            }
-        }
-        System.out.println("\nClear");
-        for(Node node : gridPane.getChildren()) {
-            if(node instanceof Label) {
-                System.out.print(((Label) node).getText() + " ");
+                ((Label) node).setText("");
             }
         }
     }
 
     public void yearBtn(ActionEvent event) {
+        year.setPromptText(year.getValue().toString());
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
-        borderPane.setCenter(gridPane);
-        System.out.println("\nNew");
-        for(Node node : gridPane.getChildren()) {
-            if(node instanceof Label) {
-                System.out.print(((Label) node).getText() + " ");
-            }
-        }
-        System.out.println("\nOld");
-        for(Node node : ((GridPane) (borderPane.getCenter())).getChildren()) {
-            if(node instanceof Label) {
-                System.out.print(((Label) node).getText() + " ");
-            }
-        }
     }
 
     public void monthBtn(ActionEvent event) {
+        month.setPromptText(month.getValue().toString());
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
-        borderPane.setCenter(gridPane);
     }
 }
