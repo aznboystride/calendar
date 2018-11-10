@@ -35,13 +35,17 @@ public class MainMenuViewController extends Controller {
     }
 
     /**
-     * User logs in and loads the Calendar View
+     * Triggers when user click login button
      * @param event
      */
     public void loginBtn(ActionEvent event) {
         login(event);
     }
 
+    /**
+     * User logs in and loads the Calendar View
+     * @param event
+     */
     private void login(Event event) {
         UserAccountDOA db = UserAccountDOA.GetInstance();
         List<UserAccount> users = db.GetList();
@@ -58,12 +62,20 @@ public class MainMenuViewController extends Controller {
         new AlertBox("username or password incorrect");
     }
 
+    /**
+     * Triggers when enter press while typing on username field
+     * @param keyEvent
+     */
     public void keyPressOnUsername(KeyEvent keyEvent) {
         if(keyEvent.getCode().equals(KeyCode.ENTER)) {
             login(keyEvent);
         }
     }
 
+    /**
+     * Triggers when enter press while typing on password field
+     * @param keyEvent
+     */
     public void keyPressOnPassword(KeyEvent keyEvent) {
         if(keyEvent.getCode().equals(KeyCode.ENTER)) {
             login(keyEvent);
