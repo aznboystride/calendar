@@ -21,7 +21,7 @@ public class UserAccountDOA implements DelegationOfAuthority {
         return INSTANCE;
     }
 
-    private final Connection connection = ConnectionManager.GetInstance().GetConnection();
+    private final Connection connection = ConnectionManager.GetInstance().GetConnection(this);
 
     @Override
     public void CreateTable() {
