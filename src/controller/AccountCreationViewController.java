@@ -44,6 +44,11 @@ public class AccountCreationViewController extends Controller {
     @FXML
     private DatePicker dob;
 
+    /**
+     * This call back function is called whenever the
+     * create user button is clicked.
+     * @param event
+     */
     public void createUserBtn(ActionEvent event) {
         if(!checkEmptyField()) {
             new AlertBox("You Left Some Fields Empty!");
@@ -66,6 +71,9 @@ public class AccountCreationViewController extends Controller {
         }
     }
 
+    /**
+     * Trim spaces of non password related userinfos
+     */
     private void trimAllSpaces() {
         for(Node node: accountFields.getChildren()) {
             if(node instanceof TextField) {
@@ -74,6 +82,10 @@ public class AccountCreationViewController extends Controller {
         }
     }
 
+    /**
+     * Checks for any empty field in user account information
+     * @return
+     */
     private boolean checkEmptyField() {
         for(Node node: accountFields.getChildren()) {
             if(node instanceof TextField) {
