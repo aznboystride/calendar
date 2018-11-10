@@ -7,10 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import java.net.URL;
 import java.sql.Date;
@@ -32,6 +32,9 @@ public class CalendarController extends Controller implements Initializable {
     @FXML
     private ComboBox month;
 
+    @FXML
+    private ColorPicker colorPicker;
+
     private GridPane gridPane;
 
     @Override
@@ -41,7 +44,6 @@ public class CalendarController extends Controller implements Initializable {
         initializeGridPaneCells();
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
         setGridPaneConstraints();
-        //setCalendarColor(Color.color(.9, .4,.4));
         borderPane.setCenter(gridPane);
     }
 
@@ -74,10 +76,10 @@ public class CalendarController extends Controller implements Initializable {
     }
 
     private void setGridPaneConstraints() {
-        gridPane.setGridLinesVisible(true);
+        gridPane.setGridLinesVisible(false);
         gridPane.setAlignment(Pos.CENTER);
-        ColumnConstraints columnConstraints = new ColumnConstraints(83);
-        RowConstraints rowConstraints = new RowConstraints(42);
+        ColumnConstraints columnConstraints = new ColumnConstraints(0);
+        RowConstraints rowConstraints = new RowConstraints(0);
         rowConstraints.setPercentHeight(50);
         columnConstraints.setPercentWidth(50);
         for (int col = 0; col < 7; col++) {
@@ -147,17 +149,6 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
-    private void setCalendarColor(Color color) {
-        for(Node node : gridPane.getChildren()) {
-            if(node instanceof Pane) {
-                for(Node p : ((Pane) node).getChildren()) {
-                    if(p instanceof Label && ((Label) p).getText().length() > 0)
-                        ((Pane) node).setBackground(new Background(new BackgroundFill(color, null, null)));
-                }
-            }
-        }
-    }
-
     public void yearBtn(ActionEvent event) {
         year.setPromptText(year.getValue().toString());
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
@@ -166,5 +157,14 @@ public class CalendarController extends Controller implements Initializable {
     public void monthBtn(ActionEvent event) {
         month.setPromptText(month.getValue().toString());
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
+    }
+
+    public void signOffBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
+    }
+
+    public void setCalendarColor(ActionEvent event) {
+        gridPane.setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
+        borderPane.getTop().setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
     }
 }
