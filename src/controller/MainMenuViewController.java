@@ -26,7 +26,7 @@ public class MainMenuViewController extends Controller {
         UserAccountDOA db = UserAccountDOA.GetInstance();
         List<UserAccount> users = db.GetList();
         for(UserAccount user: users) {
-            if(user.getUserName().equalsIgnoreCase(username.getText())) {
+            if(user.getUserName().equalsIgnoreCase(username.getText().trim())) {
                 if(user.getPassword().equals(password.getText())) {
                     User.GetInstance().setUserAccount(user);
                     LoadFXML(event, "Calendar App - CalendarView", "/fxml/Calendar.fxml");
