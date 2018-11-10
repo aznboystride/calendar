@@ -148,9 +148,9 @@ public class UserAccount
         this.userName = userName;
     }
 
-    public void createAppointment(Date date, Time time, String place, String eventName)
+    public void createAppointment(Date date, Time time, String place, String eventName, String withPersonUsername)
     {
-        appointments.add(new Appointment(date, time, place, eventName));
+        appointments.add(new Appointment(date, time, place, eventName, userName, withPersonUsername));
     }
 
     public ArrayList<Appointment> getAppointments() {
