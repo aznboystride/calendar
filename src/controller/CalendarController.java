@@ -21,6 +21,10 @@ import java.util.ResourceBundle;
 
 import helper.CalendarHelper;
 
+/**
+ * This class controller is largely responsible for the creation
+ * and the manipulation of the calendar view.
+ */
 public class CalendarController extends Controller implements Initializable {
 
     @FXML
@@ -37,6 +41,11 @@ public class CalendarController extends Controller implements Initializable {
 
     private GridPane gridPane;
 
+    /**
+     * Initializes the calendar gridpane and month dropdown and year dropdown
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeMonthDropDown();
@@ -47,6 +56,9 @@ public class CalendarController extends Controller implements Initializable {
         borderPane.setCenter(gridPane);
     }
 
+    /**
+     * Initializes gridpane cells and add a blank pane to each cell
+     */
     private void initializeGridPaneCells() {
         gridPane = new GridPane();
         Pane pane;
@@ -61,6 +73,10 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Creates and returns a Label with a default font and size
+     * @return Label
+     */
     private Label getCalendarLabel() {
         Label label = new Label();
         label.setLayoutX(75);
@@ -69,12 +85,20 @@ public class CalendarController extends Controller implements Initializable {
         return label;
     }
 
+    /**
+     * Takes in a Label and adds appends it to a pane
+     * @param label Came from getCalendarLabel method
+     * @return new pane with label associated with it
+     */
     private Pane getCalendarPane(Label label) {
         Pane pane = new Pane();
         pane.getChildren().add(label);
         return pane;
     }
 
+    /**
+     * Sets the default constraints of the calendar gridpane
+     */
     private void setGridPaneConstraints() {
         gridPane.setGridLinesVisible(false);
         gridPane.setAlignment(Pos.CENTER);
@@ -90,6 +114,9 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Initializes the year drop down all the way to 1920
+     */
     private void initializeYearDropDown() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date(System.currentTimeMillis()));
@@ -99,6 +126,9 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Initializes the month drop down
+     */
     private void initializeMonthDropDown() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM");
         month.setPromptText(dateFormat.format(new Date(System.currentTimeMillis())));
@@ -112,6 +142,11 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * This method sets the calendar according to the month and year
+     * @param month String month associated with calendar view
+     * @param year int year associated with calendar view
+     */
     private void setCalendarRange(String month, int year) {
         clearCalendarRange();
         int lastDayOfMonth = CalendarHelper.getLastDayOfMonth(month, year);
@@ -137,6 +172,10 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * This method clears all the labels and color of calendar Gridpane.
+     * Typically called before resetting the Calendar Gridpane.
+     */
     private void clearCalendarRange() {
         for(Node node : gridPane.getChildren()) {
             if(node instanceof Pane) {
@@ -149,20 +188,36 @@ public class CalendarController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Sets calendar range according the year chosen
+     * @param event
+     */
     public void yearBtn(ActionEvent event) {
         year.setPromptText(year.getValue().toString());
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
     }
 
+    /**
+     * Sets the calendar range according the month chosen
+     * @param event
+     */
     public void monthBtn(ActionEvent event) {
         month.setPromptText(month.getValue().toString());
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
     }
 
+    /**
+     * Signs of the user and loads the main menu
+     * @param event
+     */
     public void signOffBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
     }
 
+    /**
+     * Color picker that allows user to change the color of calendar view
+     * @param event
+     */
     public void setCalendarColor(ActionEvent event) {
         gridPane.setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
         borderPane.getTop().setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
