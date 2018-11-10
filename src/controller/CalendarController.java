@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import java.net.URL;
@@ -221,5 +222,17 @@ public class CalendarController extends Controller implements Initializable {
     public void setCalendarColor(ActionEvent event) {
         gridPane.setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
         borderPane.getTop().setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
+    }
+
+    /**
+     * Sets month combobox as user types
+     * @param keyEvent
+     */
+    public void keyTypedMonth(KeyEvent keyEvent) {
+        for(Object m : month.getItems()) {
+            if(m.toString().startsWith(keyEvent.getCharacter().toUpperCase())) {
+                month.setValue(m);
+            }
+        }
     }
 }
