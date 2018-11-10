@@ -1,13 +1,16 @@
 package helper;
 
+import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
+
 public class CalendarPoint {
 
     private int x;
     private int y;
 
-    public CalendarPoint() {
-        x = 0;
-        y = 0;
+    public CalendarPoint(Node node) {
+        x = GridPane.getColumnIndex(node);
+        y = GridPane.getRowIndex(node);
     }
 
     public int GetDayNumber() {
