@@ -1,5 +1,6 @@
 package controller;
 
+import implementationmodel.AppointmentDOA;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,17 +40,16 @@ public class CreateAppointmentViewController extends Controller implements Initi
      * @param e
      */
     public void createAppointmentBtn(ActionEvent e) {
-        User.GetInstance().createAppointment(
-                new Appointment(
-                        Date.valueOf(datePicker.getValue()),
-                        new Time(System.currentTimeMillis()),
-                        place.getText(),
-                        event.getText(),
-                        User.GetInstance().getUserName(),
-                        username.getText()
-                )
+        Appointment appointment = new Appointment(
+                Date.valueOf(datePicker.getValue()),
+                new Time(System.currentTimeMillis()),
+                place.getText(),
+                event.getText(),
+                User.GetInstance().getUserName(),
+                username.getText()
         );
-
+        User.GetInstance().createAppointment(appointment);
+        AppointmentDOA.GetInstance().Insert(appointment);
     }
 
 
