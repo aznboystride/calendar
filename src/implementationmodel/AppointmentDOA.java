@@ -25,14 +25,13 @@ public class AppointmentDOA implements DelegationOfAuthority {
     @Override
     public void CreateTable() {
         String createInsr = "" +
-                "CREATE TABLE USERACCOUNT(" +
+                "CREATE TABLE Appointment(" +
                 "username varchar(50)," +
-                "password varchar(50)," +
-                "firstname varchar(50)," +
-                "lastname varchar(50)," +
-                "email varchar(50)," +
-                "gender char," +
-                "dob DATE" +
+                "withperson varchar(50)," +
+                "event varchar(50)," +
+                "place varchar(50)," +
+                "date_meeting DATE," +
+                "time_meeting TIME" +
                 ");";
         try {
             PreparedStatement statement = connection.prepareStatement(createInsr);
