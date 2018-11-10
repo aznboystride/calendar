@@ -20,8 +20,7 @@ public class CalendarHelper {
     }
 
     public static int getFirstDayOfWeek(String month, int year) {
-        int monthNum = 0;
-        monthNum = getMonthFromString(month);
+        int monthNum = getMonthFromString(month);
         Calendar calendar = Calendar.getInstance();
         Date date = null;
         try {
