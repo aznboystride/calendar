@@ -8,13 +8,13 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CalendarController">
    <top>
-      <AnchorPane prefHeight="132.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="123.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar prefHeight="29.0" prefWidth="700.0">
+            <MenuBar prefHeight="29.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" onAction="#signOffBtn" text="Sign Off" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -32,8 +32,9 @@
             <RadioButton layoutX="153.0" layoutY="48.0" mnemonicParsing="false" text="Weekly View" />
             <RadioButton layoutX="477.0" layoutY="48.0" mnemonicParsing="false" text="Daily View" />
             <RadioButton layoutX="313.0" layoutY="48.0" mnemonicParsing="false" text="Calendar View" />
-            <ComboBox fx:id="month" layoutX="149.0" layoutY="77.0" onAction="#monthBtn" prefWidth="150.0" promptText="Month" />
-            <ComboBox fx:id="year" layoutX="369.0" layoutY="77.0" onAction="#yearBtn" prefWidth="150.0" promptText="Year" />
+            <ComboBox fx:id="month" layoutX="49.0" layoutY="77.0" onAction="#monthBtn" prefHeight="27.0" prefWidth="124.0" promptText="Month" />
+            <ComboBox fx:id="year" layoutX="198.0" layoutY="77.0" onAction="#yearBtn" prefHeight="27.0" prefWidth="96.0" promptText="Year" />
+            <ColorPicker fx:id="colorPicker" layoutX="477.0" layoutY="78.0" onAction="#setCalendarColor" />
          </children>
       </AnchorPane>
    </top>
