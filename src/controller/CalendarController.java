@@ -1,5 +1,6 @@
 package controller;
 
+import helper.CalendarPoint;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -114,23 +115,17 @@ public class CalendarController extends Controller implements Initializable {
         int lastDayOfMonth = CalendarHelper.getLastDayOfMonth(month, year);
         int lastDayOfLastMonth = CalendarHelper.getLastDayOfLastMonth(month, year);
         int firstDayOfWeek = CalendarHelper.getFirstDayOfWeek(month, year);
-        int day = 1;
-        int preCounter = 0;
         for (Node node : gridPane.getChildren()) {
             if (node instanceof Pane) {
                 for(Node p : ((Pane) node).getChildren()) {
                     if (p instanceof Label) {
-                        if (GridPane.getRowIndex(node) == 0 && GridPane.getColumnIndex(node) < firstDayOfWeek) {
-                            ((Label) p).setText(String.valueOf(lastDayOfLastMonth - firstDayOfWeek + ++preCounter));
-                            ((Label) p).setStyle("-fx-text-fill: gray");
-                        }
-                        if (day == lastDayOfMonth + firstDayOfWeek + 1)
-                            break;
-                        if (GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) + 1 > lastDayOfMonth + firstDayOfWeek)
-                            continue;
-                        if (GridPane.getRowIndex(node) > 0 || GridPane.getColumnIndex(node) >= firstDayOfWeek) {
-                            ((Label) p).setText(String.valueOf(GridPane.getRowIndex(node) * 7 + GridPane.getColumnIndex(node) - firstDayOfWeek + 1));
-                            day++;
+                        CalendarPoint.setPoint(node);
+                        if(CalendarPoint.compare(firstDayOfWeek) < 0 && GridPane.getRowIndex(node) == 0) {
+                            ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber() + lastDayOfLastMonth - firstDayOfWeek));
+                        } else if(CalendarPoint.compare(lastDayOfMonth) > 0) {
+                            ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber() - lastDayOfMonth));
+                        } else {
+                            ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber()));
                         }
                     }
                 }
