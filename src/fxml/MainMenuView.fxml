@@ -28,20 +28,20 @@
         </MenuBar>
         <AnchorPane prefHeight="372.0" prefWidth="600.0">
             <children>
-                <Label layoutX="72.0" layoutY="29.0" text="WELCOME TO CALENDAR SCHEDULER!" textFill="#6a0ee3">
+                <Label layoutX="120.0" layoutY="24.0" text="WELCOME TO CALENDAR SCHEDULER!" textFill="#6a0ee3">
                     <font>
                         <Font name="System Italic" size="24.0" />
                     </font>
                 </Label>
-                <Label layoutX="177.0" layoutY="106.0" text="What Would You Like To Do?">
+                <Label layoutX="227.0" layoutY="105.0" text="What Would You Like To Do?">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button layoutX="215.0" layoutY="293.0" mnemonicParsing="false" onAction="#createAccountBtn" prefHeight="27.0" prefWidth="167.0" text="Create Account" />
-                <Button layoutX="215.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="27.0" prefWidth="167.0" text="Login" />
-                <TextField fx:id="username" layoutX="217.0" layoutY="159.0" promptText="username" />
-                <PasswordField fx:id="password" layoutX="217.0" layoutY="201.0" promptText="password" />
+                <Button layoutX="264.0" layoutY="291.0" mnemonicParsing="false" onAction="#createAccountBtn" prefHeight="27.0" prefWidth="167.0" text="Create Account" />
+                <Button layoutX="264.0" layoutY="252.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="27.0" prefWidth="167.0" text="Login" />
+                <TextField fx:id="username" layoutX="266.0" layoutY="159.0" promptText="username" />
+                <PasswordField fx:id="password" layoutX="265.0" layoutY="199.0" promptText="password" />
                 <Label fx:id="userLabel" layoutX="430.0" layoutY="164.0" textFill="#e13030" />
                 <Label fx:id="passLabel" layoutX="430.0" layoutY="206.0" textFill="#e13030" />
             </children>
