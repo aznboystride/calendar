@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
@@ -64,7 +65,7 @@ public class AccountCreationViewController extends Controller {
             if(!UserAccountDOA.GetInstance().Exists(userAccount)) {
                 User.GetInstance().setUserAccount(userAccount);
                 UserAccountDOA.GetInstance().Insert(userAccount);
-                LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
+                LoadFXML((Event) event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
             } else {
                 new AlertBox("That username already exists!");
             }
