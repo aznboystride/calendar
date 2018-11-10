@@ -1,13 +1,10 @@
 package controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import implementationmodel.UserAccountDOA;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import object.AlertBox;
 import object.User;
 import object.UserAccount;
@@ -39,17 +36,6 @@ public class MainMenuViewController extends Controller {
      * @param event
      */
     public void loginBtn(ActionEvent event) {
-        login(event);
-    }
-
-    public void keyPressedEvent(KeyEvent keyEvent) {
-        System.out.println(keyEvent.getCode());
-        if(keyEvent.getCode().equals(KeyCode.ENTER)) {
-            login(keyEvent);
-        }
-    }
-
-    private void login(Event event) {
         UserAccountDOA db = UserAccountDOA.GetInstance();
         List<UserAccount> users = db.GetList();
         for(UserAccount user: users) {
