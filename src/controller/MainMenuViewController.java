@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import implementationmodel.UserAccountDOA;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import object.AlertBox;
 import object.User;
 import object.UserAccount;
@@ -54,5 +56,17 @@ public class MainMenuViewController extends Controller {
             }
         }
         new AlertBox("username or password incorrect");
+    }
+
+    public void keyPressOnUsername(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER)) {
+            login(keyEvent);
+        }
+    }
+
+    public void keyPressOnPassword(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER)) {
+            login(keyEvent);
+        }
     }
 }
