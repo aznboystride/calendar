@@ -7,6 +7,9 @@ import implementationmodel.UserAccountDOA;
 import object.AlertBox;
 import object.User;
 
+/**
+ * This controller is the one controlling the changepassword view fxml
+ */
 public class ChangePasswordViewController extends Controller {
 
     @FXML
@@ -18,6 +21,10 @@ public class ChangePasswordViewController extends Controller {
     @FXML
     private PasswordField confirmPass;
 
+    /**
+     * When this button is clicked, the password of the user gets updated
+     * @param event ActionEvent associated with the button click
+     */
     public void updateBtn(ActionEvent event) {
         UserAccountDOA db = UserAccountDOA.GetInstance();
         if(User.GetInstance().getPassword().equals(oldPass.getText())) {
