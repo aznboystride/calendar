@@ -8,7 +8,7 @@ public interface DBConnectionManager {
      * Determines how database connection is established
      * @return Connection to database
      */
-    Connection GetConnection();
+    Connection GetConnection(Object o);
 
     /**
      * Closes the current connection to database
