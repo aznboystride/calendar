@@ -2,26 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7b19aec-2c38-402e-94bb-5c1e5162992b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/controller/AccountCreationViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/controller/AccountCreationViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/controller/CalendarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/controller/CalendarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/controller/CalendarViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/controller/ChangePasswordViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/controller/ChangePasswordViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/controller/MainMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/controller/MainMenuViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/controller/ModifyAccountViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/controller/ModifyAccountViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/AccountCreationView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/AccountCreationView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/Calendar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/Calendar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/CalendarView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/ChangePasswordView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/ChangePasswordView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/MainMenuView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/MainMenuView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/ModifyAccountView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/fxml/ModifyAccountView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/implementationmodel/ConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/implementationmodel/ConnectionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/implementationmodel/UserAccountDOA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/implementationmodel/UserAccountDOA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/info/DBConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/info/DBConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CalendarRefact/interfacemodel/DBConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CalendarRefact/interfacemodel/DBConnectionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/CreateAppointmentView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/CreateAppointmentView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/implementationmodel/AppointmentDOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementationmodel/AppointmentDOA.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -98,8 +78,15 @@
       <file leaf-file-name="AppointmentDOA.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/implementationmodel/AppointmentDOA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="120">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#867#868#0" expanded="true" />
+                <element signature="e#894#895#0" expanded="true" />
+                <element signature="e#1047#1048#0" expanded="true" />
+                <element signature="e#1075#1076#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -365,12 +352,12 @@
       <workItem from="1541783683595" duration="9079000" />
       <workItem from="1541807378262" duration="8494000" />
       <workItem from="1541880715795" duration="4447000" />
-      <workItem from="1541885679682" duration="204000" />
+      <workItem from="1541885679682" duration="445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56459000" />
+    <option name="totallyTimeSpent" value="56700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -456,6 +443,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1075#1076#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -865,8 +859,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/implementationmodel/AppointmentDOA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="120">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#867#868#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1075#1076#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
