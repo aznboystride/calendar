@@ -39,7 +39,7 @@
                     </font>
                 </Label>
                 <Button layoutX="264.0" layoutY="291.0" mnemonicParsing="false" onAction="#createAccountBtn" prefHeight="27.0" prefWidth="167.0" text="Create Account" />
-                <Button layoutX="264.0" layoutY="252.0" mnemonicParsing="false" onAction="#loginBtn" prefHeight="27.0" prefWidth="167.0" text="Login" />
+                <Button layoutX="264.0" layoutY="252.0" mnemonicParsing="false" onAction="#loginBtn" onKeyPressed="#keyPressedEvent" prefHeight="27.0" prefWidth="167.0" text="Login" />
                 <TextField fx:id="username" layoutX="266.0" layoutY="159.0" promptText="username" />
                 <PasswordField fx:id="password" layoutX="265.0" layoutY="199.0" promptText="password" />
                 <Label fx:id="userLabel" layoutX="430.0" layoutY="164.0" textFill="#e13030" />
