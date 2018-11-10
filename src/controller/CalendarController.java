@@ -122,8 +122,10 @@ public class CalendarController extends Controller implements Initializable {
                         CalendarPoint.setPoint(node);
                         if(CalendarPoint.compare(firstDayOfWeek) < 0 && GridPane.getRowIndex(node) == 0) {
                             ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber() + lastDayOfLastMonth - firstDayOfWeek));
+                            ((Label) p).setStyle("-fx-text-fill: gray");
                         } else if(CalendarPoint.compare(lastDayOfMonth) > 0) {
                             ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber() - lastDayOfMonth));
+                            ((Label) p).setStyle("-fx-text-fill: gray");
                         } else {
                             ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber()));
                         }
