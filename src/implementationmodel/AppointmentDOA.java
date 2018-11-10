@@ -6,10 +6,6 @@ import java.util.List;
 
 public class AppointmentDOA implements DelegationOfAuthority {
 
-    
-public class AppointmentDOA {
-
-}
     /**
      * Creates Table
      */
