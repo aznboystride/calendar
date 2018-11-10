@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateAppointmentViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.CreateAppointmentView">
    <children>
       <Label layoutX="206.0" layoutY="43.0" prefHeight="38.0" prefWidth="215.0" text="Appointment Creation" textFill="#1e19c2">
          <font>
@@ -19,10 +18,10 @@
       <Label layoutX="176.0" layoutY="152.0" text="Person" />
       <Label layoutX="176.0" layoutY="200.0" text="Date" />
       <Button layoutX="242.0" layoutY="290.0" mnemonicParsing="false" onAction="#createAppointmentBtn" text="Create Appointment" />
-      <TextField fx:id="event" layoutX="230.0" layoutY="105.0" />
-      <TextField fx:id="username" layoutX="230.0" layoutY="147.0" />
+      <TextField fx:id="event" layoutX="230.0" layoutY="105.0" promptText="event name" />
+      <TextField fx:id="username" layoutX="230.0" layoutY="147.0" promptText="person's username" />
       <Label layoutX="176.0" layoutY="245.0" text="Time" />
-      <DatePicker fx:id="datePicker" layoutX="229.0" layoutY="195.0" prefHeight="27.0" prefWidth="167.0" />
-      <ComboBox fx:id="time" layoutX="230.0" layoutY="240.0" prefHeight="27.0" prefWidth="167.0" />
+      <DatePicker fx:id="datePicker" layoutX="229.0" layoutY="195.0" prefHeight="27.0" prefWidth="167.0" promptText="mm/dd/yyyy" />
+      <ComboBox fx:id="time" layoutX="230.0" layoutY="240.0" prefHeight="27.0" prefWidth="167.0" promptText="1:00 pm" />
    </children>
 </AnchorPane>
