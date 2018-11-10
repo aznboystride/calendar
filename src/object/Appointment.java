@@ -15,15 +15,15 @@ public class Appointment {
 
     private String username;
 
-    public String getWithWhoUsername() {
-        return withWhoUsername;
+    private String withperson;
+
+    public String getWithperson() {
+        return withperson;
     }
 
-    public void setWithWhoUsername(String withWhoUsername) {
-        this.withWhoUsername = withWhoUsername;
+    public void setWithperson(String withperson) {
+        this.withperson = withperson;
     }
-
-    private String withWhoUsername;
 
     public String getUsername() {
         return username;
@@ -65,13 +65,13 @@ public class Appointment {
         this.eventName = eventName;
     }
 
-    public Appointment(Date date, Time time, String place, String eventName, String username, String withWhoUsername)
+    public Appointment(Date date, Time time, String place, String eventName, String username, String withperson)
     {
         this.date = date;
         this.time = time;
         this.place = place;
         this.eventName = eventName;
         this.username = username;
-        this.withWhoUsername = withWhoUsername;
+        this.withperson = withperson;
     }
 }
