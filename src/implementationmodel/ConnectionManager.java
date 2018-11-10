@@ -28,15 +28,17 @@ public class ConnectionManager implements DBConnectionManager {
     private Connection connection;
 
     @Override
-    public Connection GetConnection() {
-        try {
-            System.out.println("Driver: " + DRIVER);
-            Class.forName(DRIVER);
-            connection = DriverManager.getConnection(URL_UserAccount, USER, PASS);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+    public Connection GetConnection(Object o) {
+        if(o instanceof UserAccountDOA) {
+            try {
+                System.out.println("Driver: " + DRIVER);
+                Class.forName(DRIVER);
+                connection = DriverManager.getConnection(URL_UserAccount, USER, PASS);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return connection;
     }
