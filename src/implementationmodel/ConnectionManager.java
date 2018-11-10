@@ -11,6 +11,8 @@ public class ConnectionManager implements DBConnectionManager {
 
     private static final String URL_UserAccount = DBConstants.URL_UserAccount.GetValue();
 
+    private static final String URL_Appointment = DBConstants.URL_Appointment.GetValue();
+
     private static final String DRIVER = DBConstants.DRIVER.GetValue();
 
     private static final String USER = DBConstants.USER.GetValue();
@@ -29,14 +31,21 @@ public class ConnectionManager implements DBConnectionManager {
 
     @Override
     public Connection GetConnection(Object o) {
+        try {
+            Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         if(o instanceof UserAccountDOA) {
             try {
-                System.out.println("Driver: " + DRIVER);
-                Class.forName(DRIVER);
                 connection = DriverManager.getConnection(URL_UserAccount, USER, PASS);
             } catch (SQLException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+            }
+        } else if(o instanceof AppointmentDOA) {
+            try {
+                connection = DriverManager.getConnection(URL_Appointment, USER, PASS);
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
