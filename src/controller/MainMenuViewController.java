@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -36,6 +37,10 @@ public class MainMenuViewController extends Controller {
      * @param event
      */
     public void loginBtn(ActionEvent event) {
+        login(event);
+    }
+
+    private void login(Event event) {
         UserAccountDOA db = UserAccountDOA.GetInstance();
         List<UserAccount> users = db.GetList();
         for(UserAccount user: users) {

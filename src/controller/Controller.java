@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -20,7 +21,7 @@ public abstract class Controller {
      * @param title Title of the new view to load
      * @param fxml Path of the fxml view to load
      */
-    protected void LoadFXML(ActionEvent event, String title, String fxml) {
+    protected void LoadFXML(Event event, String title, String fxml) {
         Stage window = null;
         if(event.getSource() instanceof Node) {
             window = (Stage) ((Node) event.getSource()).getScene().getWindow();
