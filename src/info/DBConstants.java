@@ -2,7 +2,8 @@ package info;
 
 public enum DBConstants {
 
-    URL("jdbc:mysql://localhost:3306/Calendar"),
+    URL_UserAccount("jdbc:mysql://localhost:3306/Calendar"),
+    URL_Appointment("jdbc:mysql://localhost:3306/Appointment"),
     USER("root"),
     PASS("s6flipto"),
     DRIVER("com.mysql.jdbc.Driver");
