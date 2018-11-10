@@ -2,16 +2,44 @@ package implementationmodel;
 
 import interfacemodel.DelegationOfAuthority;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class AppointmentDOA implements DelegationOfAuthority {
+
+    private static final AppointmentDOA INSTANCE = new AppointmentDOA();
+
+    private AppointmentDOA() {}
+
+    public static AppointmentDOA GetInstance() {
+        return INSTANCE;
+    }
+
+    private final Connection connection = ConnectionManager.GetInstance().GetConnection(this);
 
     /**
      * Creates Table
      */
     @Override
     public void CreateTable() {
-        
+        String createInsr = "" +
+                "CREATE TABLE USERACCOUNT(" +
+                "username varchar(50)," +
+                "password varchar(50)," +
+                "firstname varchar(50)," +
+                "lastname varchar(50)," +
+                "email varchar(50)," +
+                "gender char," +
+                "dob DATE" +
+                ");";
+        try {
+            PreparedStatement statement = connection.prepareStatement(createInsr);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
