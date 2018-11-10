@@ -6,11 +6,20 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+/**
+ * This class is an interface that offers LoadFXML method
+ * This class is to be extended by every ViewController class
+ */
 public abstract class Controller {
 
+    /**
+     *
+     * @param event ActionEvent associated with the action
+     * @param title Title of the new view to load
+     * @param fxml Path of the fxml view to load
+     */
     protected void LoadFXML(ActionEvent event, String title, String fxml) {
         Stage window = null;
         if(event.getSource() instanceof Node) {
