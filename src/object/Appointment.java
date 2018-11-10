@@ -17,6 +17,10 @@ public class Appointment {
 
     private String withperson;
 
+    public Appointment() {
+
+    }
+
     public String getWithperson() {
         return withperson;
     }

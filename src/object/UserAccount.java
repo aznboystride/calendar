@@ -156,4 +156,8 @@ public class UserAccount
     public ArrayList<Appointment> getAppointments() {
         return appointments;
     }
+
+    public void createAppointment(Appointment appointment) {
+        appointments.add(appointment);
+    }
 }

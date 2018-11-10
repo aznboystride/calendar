@@ -39,7 +39,17 @@ public class CreateAppointmentViewController extends Controller implements Initi
      * @param e
      */
     public void createAppointmentBtn(ActionEvent e) {
-        new Appointment(Date.valueOf(datePicker.getValue()), new Time(System.currentTimeMillis()), place.getText(), event.getText(), User.GetInstance().getUserName(), username.getText());
+        User.GetInstance().createAppointment(
+                new Appointment(
+                        Date.valueOf(datePicker.getValue()),
+                        new Time(System.currentTimeMillis()),
+                        place.getText(),
+                        event.getText(),
+                        User.GetInstance().getUserName(),
+                        username.getText()
+                )
+        );
+
     }
 
 
