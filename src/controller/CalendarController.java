@@ -121,13 +121,13 @@ public class CalendarController extends Controller implements Initializable {
                     if (p instanceof Label) {
                         CalendarPoint.setPoint(node);
                         if(CalendarPoint.compare(firstDayOfWeek) < 0 && GridPane.getRowIndex(node) == 0) {
-                            ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber() + lastDayOfLastMonth - firstDayOfWeek));
+                            ((Label) p).setText(String.valueOf(1 + CalendarPoint.GetDayNumber() + lastDayOfLastMonth - firstDayOfWeek));
                             ((Label) p).setStyle("-fx-text-fill: gray");
-                        } else if(CalendarPoint.compare(lastDayOfMonth + firstDayOfWeek) >= 0) {
-                            ((Label) p).setText(String.valueOf(1 + CalendarPoint.GetDayNumber() - lastDayOfMonth - firstDayOfWeek));
+                        } else if(CalendarPoint.compare(lastDayOfMonth + firstDayOfWeek - 1) > 0) {
+                            ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber() - lastDayOfMonth - firstDayOfWeek + 1));
                             ((Label) p).setStyle("-fx-text-fill: gray");
                         } else {
-                            ((Label) p).setText(String.valueOf(CalendarPoint.GetDayNumber() - firstDayOfWeek + 1));
+                            ((Label) p).setText(String.valueOf(1 + CalendarPoint.GetDayNumber() - firstDayOfWeek));
                         }
                     }
                 }
@@ -141,6 +141,7 @@ public class CalendarController extends Controller implements Initializable {
                 for(Node p : ((Pane) node).getChildren())
                     if (p instanceof Label) {
                         ((Label) p).setText("");
+                        ((Label) p).setStyle(null);
                     }
             }
         }
