@@ -17,11 +17,13 @@
       <Label layoutX="176.0" layoutY="110.0" text="Event" />
       <Label layoutX="176.0" layoutY="152.0" text="Person" />
       <Label layoutX="176.0" layoutY="200.0" text="Date" />
-      <Button layoutX="242.0" layoutY="290.0" mnemonicParsing="false" onAction="#createAppointmentBtn" text="Create Appointment" />
+      <Button layoutX="243.0" layoutY="334.0" mnemonicParsing="false" onAction="#createAppointmentBtn" text="Create Appointment" />
       <TextField fx:id="event" layoutX="230.0" layoutY="105.0" promptText="event name" />
       <TextField fx:id="username" layoutX="230.0" layoutY="147.0" promptText="person's username" />
-      <Label layoutX="176.0" layoutY="245.0" text="Time" />
+      <Label layoutX="178.0" layoutY="292.0" text="Time" />
       <DatePicker fx:id="datePicker" layoutX="229.0" layoutY="195.0" prefHeight="27.0" prefWidth="167.0" promptText="mm/dd/yyyy" />
-      <ComboBox fx:id="time" layoutX="230.0" layoutY="240.0" prefHeight="27.0" prefWidth="167.0" promptText="1:00 pm" />
+      <ComboBox fx:id="time" layoutX="230.0" layoutY="287.0" prefHeight="27.0" prefWidth="167.0" promptText="1:00 pm" />
+      <Label layoutX="177.0" layoutY="247.0" text="Place" />
+      <TextField fx:id="place" layoutX="229.0" layoutY="242.0" promptText="place" />
    </children>
 </AnchorPane>

@@ -6,8 +6,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import object.Appointment;
+import object.User;
 
 import java.net.URL;
+import java.sql.Time;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -22,6 +26,9 @@ public class CreateAppointmentViewController extends Controller implements Initi
     private TextField event;
 
     @FXML
+    private TextField place;
+
+    @FXML
     private DatePicker datePicker;
 
     @FXML
@@ -29,10 +36,10 @@ public class CreateAppointmentViewController extends Controller implements Initi
 
     /**
      * Adds appointment to database corresponding to current user
-     * @param event
+     * @param e
      */
-    public void createAppointmentBtn(ActionEvent event) {
-
+    public void createAppointmentBtn(ActionEvent e) {
+        new Appointment(Date.valueOf(datePicker.getValue()), new Time(System.currentTimeMillis()), place.getText(), event.getText(), User.GetInstance().getUserName(), username.getText());
     }
 
 
