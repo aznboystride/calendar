@@ -13,6 +13,26 @@ public class Appointment {
 
     private String eventName;
 
+    private String username;
+
+    public String getWithWhoUsername() {
+        return withWhoUsername;
+    }
+
+    public void setWithWhoUsername(String withWhoUsername) {
+        this.withWhoUsername = withWhoUsername;
+    }
+
+    private String withWhoUsername;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -45,11 +65,13 @@ public class Appointment {
         this.eventName = eventName;
     }
 
-    public Appointment(Date date, Time time, String place, String eventName)
+    public Appointment(Date date, Time time, String place, String eventName, String username, String withWhoUsername)
     {
         this.date = date;
         this.time = time;
         this.place = place;
         this.eventName = eventName;
+        this.username = username;
+        this.withWhoUsername = withWhoUsername;
     }
 }
