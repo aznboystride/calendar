@@ -14,7 +14,7 @@ public class CalendarPoint {
     }
 
 
-    private static int GetDayNumber() {
+    public static int GetDayNumber() {
         return 1 + x + y * 7;
     }
 
