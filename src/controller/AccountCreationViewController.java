@@ -59,13 +59,13 @@ public class AccountCreationViewController extends Controller {
             new AlertBox("Gender Field Must Be M / F");
         } else {
             trimAllSpaces();
-            UserAccount userAccount = new UserAccount(usernameField.getText(), firstnameField.getText(),
+            UserAccount userAccount = new UserAccount(usernameField.getText().trim(), firstnameField.getText().trim(),
                     lastnameField.getText().trim(), emailField.getText().trim(), genderField.getText().charAt(0),
                     Date.valueOf(dob.getValue()), passwordField.getText());
             if(!UserAccountDOA.GetInstance().Exists(userAccount)) {
                 User.GetInstance().setUserAccount(userAccount);
                 UserAccountDOA.GetInstance().Insert(userAccount);
-                LoadFXML((Event) event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
+                LoadFXML((Event) event, "Calendar App - Calendar View", "/fxml/Calendar.fxml");
             } else {
                 new AlertBox("That username already exists!");
             }
