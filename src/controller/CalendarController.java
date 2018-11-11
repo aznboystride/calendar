@@ -69,6 +69,9 @@ public class CalendarController extends Controller implements Initializable {
         borderPane.setCenter(gridPane);
     }
 
+    /**
+     * Initializes all of the radio buttons in toggleview
+     */
     private void initializeToggleView() {
         calendarView.setOnAction(event ->
                 LoadFXML(
