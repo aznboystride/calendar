@@ -30,14 +30,25 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <RadioButton layoutX="99.0" layoutY="118.0" mnemonicParsing="false" text="Weekly View" AnchorPane.leftAnchor="99.0" />
-            <RadioButton layoutX="513.0" layoutY="117.0" mnemonicParsing="false" text="Daily View" AnchorPane.rightAnchor="99.0" />
-            <RadioButton layoutX="299.0" layoutY="117.0" mnemonicParsing="false" text="Calendar View" />
-            <Label fx:id="monthLabel" layoutX="305.0" layoutY="62.0" textFill="#0d0fa1" underline="true">
+            <RadioButton layoutX="100.0" layoutY="97.0" mnemonicParsing="false" text="Weekly View" AnchorPane.leftAnchor="100.0" />
+            <RadioButton layoutX="514.0" layoutY="98.0" mnemonicParsing="false" text="Daily View" AnchorPane.rightAnchor="98.0" />
+            <RadioButton layoutX="296.0" layoutY="98.0" mnemonicParsing="false" text="Calendar View" />
+            <Label fx:id="monthLabel" layoutX="294.0" layoutY="49.0" text="monthlabel" textFill="#0d0fa1" underline="true">
                <font>
                   <Font name="Euphemia UCAS Italic" size="24.0" />
                </font>
             </Label>
+            <HBox layoutX="70.0" layoutY="131.0" prefHeight="23.0" prefWidth="624.0" spacing="75.0">
+               <children>
+                  <Label text="Sun" />
+                  <Label text="Mon" />
+                  <Label text="Tue" />
+                  <Label text="Wed" />
+                  <Label text="Thu" />
+                  <Label text="Fri" />
+                  <Label text="Sat" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </top>
