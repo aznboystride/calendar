@@ -40,6 +40,9 @@ public class CalendarController extends Controller implements Initializable {
     @FXML
     private ColorPicker colorPicker;
 
+    @FXML
+    private Label monthLabel;
+
     private GridPane gridPane;
 
     /**
@@ -133,6 +136,7 @@ public class CalendarController extends Controller implements Initializable {
     private void initializeMonthDropDown() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM");
         month.setPromptText(dateFormat.format(new Date(System.currentTimeMillis())));
+        monthLabel.setText(month.getPromptText());
         for (int i = 1; i <= 12; i++) {
             try {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("M");
@@ -204,6 +208,7 @@ public class CalendarController extends Controller implements Initializable {
      */
     public void monthBtn(ActionEvent event) {
         month.setPromptText(month.getValue().toString());
+        monthLabel.setText(month.getValue().toString());
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
     }
 
@@ -232,6 +237,7 @@ public class CalendarController extends Controller implements Initializable {
         for(Object m : month.getItems()) {
             if(m.toString().startsWith(keyEvent.getCharacter().toUpperCase())) {
                 month.setValue(m);
+                monthLabel.setText(m.toString());
             }
         }
     }
