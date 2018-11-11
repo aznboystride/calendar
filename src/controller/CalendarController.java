@@ -2,7 +2,6 @@ package controller;
 
 import helper.CalendarPoint;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
