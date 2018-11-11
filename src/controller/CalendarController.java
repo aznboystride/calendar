@@ -226,7 +226,6 @@ public class CalendarController extends Controller implements Initializable {
      */
     public void setCalendarColor(ActionEvent event) {
         gridPane.setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
-        borderPane.getTop().setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
     }
 
     /**
