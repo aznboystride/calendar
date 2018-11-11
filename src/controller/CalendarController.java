@@ -2,14 +2,13 @@ package controller;
 
 import helper.CalendarPoint;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
@@ -43,6 +42,15 @@ public class CalendarController extends Controller implements Initializable {
     @FXML
     private Label monthLabel;
 
+    @FXML
+    private RadioButton calendarView;
+
+    @FXML
+    private RadioButton dailyView;
+
+    @FXML
+    private RadioButton weeklyView;
+
     private GridPane gridPane;
 
     /**
@@ -52,12 +60,37 @@ public class CalendarController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initializeToggleView();
         initializeMonthDropDown();
         initializeYearDropDown();
         initializeGridPaneCells();
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
         setGridPaneConstraints();
         borderPane.setCenter(gridPane);
+    }
+
+    private void initializeToggleView() {
+        calendarView.setOnAction(event ->
+                LoadFXML(
+                        event,
+                        "Calendar App - Calendar View",
+                        "/fxml/Calendar.fxml"
+                )
+        );
+        dailyView.setOnAction(event ->
+                LoadFXML(
+                        event,
+                        "Calendar App - Daily View",
+                        "/fxml/DailyView.fxml"
+                )
+        );
+        weeklyView.setOnAction(event ->
+                LoadFXML(
+                        event,
+                        "Calendar App - Weekly View",
+                        "/fxml/WeeklyView.fxml"
+                )
+        );
     }
 
     /**
