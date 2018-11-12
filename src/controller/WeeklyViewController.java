@@ -145,4 +145,24 @@ public class WeeklyViewController extends CalendarViewController {
         monthLabel.setText(month.getValue().toString());
         setCalendarRange(monthLabel.getText(), Integer.parseInt(year.getPromptText()), Integer.parseInt(Character.toString(weekCombo.getPromptText().charAt(5))));
     }
+
+    public void modifyAccountBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Modify Account", "/fxml/ModifyAccountView.fxml");
+    }
+
+    public void changePasswordBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Change Password", "/fxml/ChangePasswordView.fxml");
+    }
+
+    public void createApptBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Create Appointment", "/fxml/CreateAppointmentView.fxml");
+    }
+
+    /**
+     * Signs of the user and loads the main menu
+     * @param event
+     */
+    public void signOffBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
+    }
 }
