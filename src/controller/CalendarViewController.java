@@ -50,7 +50,7 @@ public class CalendarViewController extends CalendarController implements Initia
     @FXML
     protected RadioButton weeklyView;
 
-    private GridPane gridPane;
+    protected GridPane gridPane;
 
     /**
      * Initializes the calendar gridpane and month dropdown and year dropdown
