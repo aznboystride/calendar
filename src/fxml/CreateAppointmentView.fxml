@@ -25,5 +25,27 @@
       <ComboBox fx:id="time" layoutX="230.0" layoutY="287.0" prefHeight="27.0" prefWidth="167.0" promptText="1:00 pm" />
       <Label layoutX="177.0" layoutY="247.0" text="Place" />
       <TextField fx:id="place" layoutX="229.0" layoutY="242.0" promptText="place" />
+      <MenuBar prefHeight="29.0" prefWidth="700.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#modifyAccountBtn" text="Modify Account" />
+                  <MenuItem mnemonicParsing="false" onAction="#signOffBtn" text="Sign Off" />
+                  <MenuItem mnemonicParsing="false" onAction="#changePasswordBtn" text="Change Password" />
+                  <MenuItem mnemonicParsing="false" onAction="#createApptBtn" text="Create Appointment" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
