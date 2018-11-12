@@ -4,9 +4,8 @@ import interfacemodel.DelegationOfAuthority;
 import object.Appointment;
 import object.UserAccount;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AppointmentDOA implements DelegationOfAuthority {
@@ -125,6 +124,28 @@ public class AppointmentDOA implements DelegationOfAuthority {
      */
     @Override
     public List GetList() {
+        List<Appointment> list = new ArrayList<>();
+        try {
+            String username, withperson, eventname, place;
+            Date date_meeting;
+            Time time_meeting;
+            PreparedStatement preparedStatement = connection.prepareStatement(String.format("SELECT * FROM " +
+                    "Appointment")
+            );
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                username = resultSet.getString("username");
+                withperson = resultSet.getString("withperson");
+                eventname = resultSet.getString("event");
+                place = resultSet.getString("place");
+                date_meeting = resultSet.getDate("date_meeting");
+                time_meeting = resultSet.getTime("time_meeting");
+                list.add(new Appointment(date_meeting, time_meeting, place, eventname, username, withperson));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
