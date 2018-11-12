@@ -31,11 +31,11 @@
                         </Menu>
                     </menus>
                 </MenuBar>
-                <RadioButton fx:id="weeklyView" layoutX="100.0" layoutY="97.0" mnemonicParsing="false" text="Weekly View" AnchorPane.leftAnchor="100.0">
+                <RadioButton fx:id="weeklyView" layoutX="100.0" layoutY="97.0" selected="true" mnemonicParsing="false" text="Weekly View" AnchorPane.leftAnchor="100.0">
                     <toggleGroup>
                         <ToggleGroup fx:id="toggleview" />
                     </toggleGroup></RadioButton>
-                <RadioButton fx:id="dailyView" layoutX="514.0" layoutY="98.0" mnemonicParsing="false" selected="true" text="Daily View" toggleGroup="$toggleview" AnchorPane.rightAnchor="98.0" />
+                <RadioButton fx:id="dailyView" layoutX="514.0" layoutY="98.0" mnemonicParsing="false" text="Daily View" toggleGroup="$toggleview" AnchorPane.rightAnchor="98.0" />
                 <RadioButton fx:id="calendarView" layoutX="296.0" layoutY="98.0" mnemonicParsing="false" text="Calendar View" toggleGroup="$toggleview" />
                 <Label fx:id="monthLabel" layoutX="294.0" layoutY="49.0" text="monthlabel" textFill="#0d0fa1" underline="true">
                     <font>

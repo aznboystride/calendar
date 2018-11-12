@@ -69,6 +69,7 @@ public class WeeklyViewController extends CalendarViewController {
 
     public void weekBtn(ActionEvent event) {
         setCalendarRange(monthLabel.getText(), Integer.parseInt(year.getPromptText()), Integer.parseInt(Character.toString(weekCombo.getValue().toString().charAt(5))));
+        weekCombo.setPromptText(weekCombo.getValue().toString());
     }
 
     /**
@@ -122,5 +123,26 @@ public class WeeklyViewController extends CalendarViewController {
         for(short i = 0; i < 4; i++) {
             weekCombo.getItems().add("Week " + (i+1));
         }
+    }
+
+    /**
+     * Sets calendar range according the year chosen
+     * @param event
+     */
+    @Override
+    public void yearBtn(ActionEvent event) {
+        year.setPromptText(year.getValue().toString());
+        setCalendarRange(monthLabel.getText(), Integer.parseInt(year.getPromptText()), Integer.parseInt(Character.toString(weekCombo.getPromptText().charAt(5))));
+    }
+
+    /**
+     * Sets the calendar range according the month chosen
+     * @param event
+     */
+    @Override
+    public void monthBtn(ActionEvent event) {
+        month.setPromptText(month.getValue().toString());
+        monthLabel.setText(month.getValue().toString());
+        setCalendarRange(monthLabel.getText(), Integer.parseInt(year.getPromptText()), Integer.parseInt(Character.toString(weekCombo.getPromptText().charAt(5))));
     }
 }
