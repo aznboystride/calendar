@@ -36,6 +36,7 @@ public class AppointmentDOA implements DelegationOfAuthority {
         try {
             PreparedStatement statement = connection.prepareStatement(createInsr);
             statement.executeUpdate();
+            System.out.println("Successfully Created Table");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -46,7 +47,14 @@ public class AppointmentDOA implements DelegationOfAuthority {
      */
     @Override
     public void DropTable() {
-
+        PreparedStatement preparedStatement = null;
+        String query = "DELETE FROM Appointment";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
