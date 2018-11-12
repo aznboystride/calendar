@@ -59,4 +59,8 @@ public class ChangePasswordViewController extends Controller {
     public void signOffBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
     }
+
+    public void calendarBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
+    }
 }

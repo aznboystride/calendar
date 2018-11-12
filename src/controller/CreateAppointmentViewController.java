@@ -66,6 +66,14 @@ public class CreateAppointmentViewController extends Controller implements Initi
         
     }
 
+    /**
+     * When button is clicked, the Change Password View will load
+     * @param event ActionEvent associated with the button click
+     */
+    public void changePasswordBtnPressed(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Change Password", "/fxml/ChangePasswordView.fxml");
+    }
+
     public void modifyAccountBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Modify Account", "/fxml/ModifyAccountView.fxml");
     }
@@ -84,5 +92,9 @@ public class CreateAppointmentViewController extends Controller implements Initi
      */
     public void signOffBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
+    }
+
+    public void calendarBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
     }
 }

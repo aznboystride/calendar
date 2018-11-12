@@ -32,7 +32,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#modifyAccountBtn" text="Modify Account" />
                   <MenuItem mnemonicParsing="false" onAction="#signOffBtn" text="Sign Off" />
                   <MenuItem mnemonicParsing="false" onAction="#changePasswordBtn" text="Change Password" />
-                  <MenuItem mnemonicParsing="false" onAction="#createApptBtn" text="Create Appointment" />
+                  <MenuItem mnemonicParsing="false" onAction="#calendarBtn" text="Calendar" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
