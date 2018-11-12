@@ -155,6 +155,12 @@ public class AppointmentDOA implements DelegationOfAuthority {
      */
     @Override
     public boolean Exists(Object o) {
+        Appointment appointment = (Appointment) o;
+        for(Appointment app: (List<Appointment>) GetList()) {
+            if(app.getUsername().equalsIgnoreCase(app.getUsername())) {
+                return true;
+            }
+        }
         return false;
     }
 }
