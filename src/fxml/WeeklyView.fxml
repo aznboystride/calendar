@@ -67,7 +67,7 @@
         </AnchorPane>
     </bottom>
    <center>
-      <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+      <GridPane fx:id="gridPane" gridLinesVisible="true" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints />
           <ColumnConstraints />

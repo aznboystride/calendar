@@ -1,36 +1,37 @@
 package controller;
 
 import javafx.event.ActionEvent;
-import javafx.scene.input.KeyEvent;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class WeeklyViewController extends CalendarViewController {
 
-    public void signOffBtn(ActionEvent event) {
-        LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
-    }
-
-    public void weekBtn(ActionEvent event) {
-
-    }
-
-    public void setCalendarColor(ActionEvent event) {
-
-    }
-
-    public void keyTypedMonth(KeyEvent keyEvent) {
-
-    }
-
-    public void monthBtn(ActionEvent event) {
-
-    }
-
-    public void yearBtn(ActionEvent event) {
+    @Override
+    protected void initializeGridPaneCells() {
 
     }
 
     @Override
-    protected void initializeGridPaneCells() {
+    protected void setGridPaneConstraints() {
+
+    }
+
+    /**
+     * Initializes the calendar gridpane and month dropdown and year dropdown
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        initializeToggleView();
+        initializeMonthDropDown();
+        initializeYearDropDown();
+        initializeGridPaneCells();
+        setGridPaneConstraints();
+    }
+
+    public void weekBtn(ActionEvent event) {
 
     }
 }
