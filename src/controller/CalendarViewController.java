@@ -24,7 +24,7 @@ import helper.CalendarHelper;
  * This class controller is largely responsible for the creation
  * and the manipulation of the calendar view.
  */
-public class CalendarController extends Controller implements Initializable {
+public class CalendarViewController extends Controller implements Initializable {
 
     @FXML
     private BorderPane borderPane;
@@ -76,7 +76,7 @@ public class CalendarController extends Controller implements Initializable {
                 LoadFXML(
                         event,
                         "Calendar App - Calendar View",
-                        "/fxml/Calendar.fxml"
+                        "/fxml/CalendarView.fxml"
                 )
         );
         dailyView.setOnAction(event ->

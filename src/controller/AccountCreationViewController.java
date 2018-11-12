@@ -65,7 +65,7 @@ public class AccountCreationViewController extends Controller {
             if(!UserAccountDOA.GetInstance().Exists(userAccount)) {
                 User.GetInstance().setUserAccount(userAccount);
                 UserAccountDOA.GetInstance().Insert(userAccount);
-                LoadFXML((Event) event, "Calendar App - Calendar View", "/fxml/Calendar.fxml");
+                LoadFXML((Event) event, "Calendar App - Calendar View", "/fxml/CalendarView.fxml");
             } else {
                 new AlertBox("That username already exists!");
             }
