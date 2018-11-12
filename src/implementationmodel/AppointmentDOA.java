@@ -1,6 +1,8 @@
 package implementationmodel;
 
 import interfacemodel.DelegationOfAuthority;
+import object.Appointment;
+import object.UserAccount;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -64,7 +66,31 @@ public class AppointmentDOA implements DelegationOfAuthority {
      */
     @Override
     public void Insert(Object t) {
-
+        Appointment app = (Appointment) t;
+        PreparedStatement preparedStatement = null;
+        String query = "insert into UserAccount VALUES (?,?,?,?,?,?)";
+        if(connection != null)
+        {
+            try
+            {
+                preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, app.getUsername());
+                preparedStatement.setString(2, app.getWithperson());
+                preparedStatement.setString(3, app.getEventName());
+                preparedStatement.setString(4, app.getPlace());
+                preparedStatement.setDate(5, app.getDate());
+                preparedStatement.setTime(6, app.getTime());
+                preparedStatement.executeUpdate();
+                System.out.println("Successfully inserted Appointment: ");
+                System.out.println(app);
+            }
+            catch(SQLException e)
+            {
+                System.out.println("Fail to insert Appointment");
+                e.printStackTrace();
+                System.exit(-1);
+            }
+        }
     }
 
     /**
