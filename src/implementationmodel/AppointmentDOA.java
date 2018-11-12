@@ -2,7 +2,6 @@ package implementationmodel;
 
 import interfacemodel.DelegationOfAuthority;
 import object.Appointment;
-import object.UserAccount;
 
 import java.sql.*;
 import java.util.ArrayList;
