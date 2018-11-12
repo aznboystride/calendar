@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * To be used by CalendarController class.
+ * To be used by CalendarViewController class.
  */
 public class CalendarHelper {
 

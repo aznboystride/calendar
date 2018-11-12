@@ -21,6 +21,14 @@ public class CalendarPoint {
         y = GridPane.getRowIndex(node);
     }
 
+    public static void setY(int y) {
+        CalendarPoint.y = y;
+    }
+
+    public static void setX(int x) {
+        CalendarPoint.x = x;
+    }
+
     /**
      *
      * @return Value of day corresponding to the coordinate
