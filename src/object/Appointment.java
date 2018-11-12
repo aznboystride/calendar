@@ -78,4 +78,14 @@ public class Appointment {
         this.username = username;
         this.withperson = withperson;
     }
+
+    @Override
+    public String toString() {
+        return "Username: " + username + "\n" +
+                "Withuser: " + withperson + "\n" +
+                "Event: " + eventName + "\n" +
+                "Place: " + place + "\n" +
+                "Date: " + date + "\n" +
+                "Time: " + time;
+    }
 }
