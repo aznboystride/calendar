@@ -116,7 +116,7 @@ public class CalendarViewController extends CalendarController implements Initia
      * Creates and returns a Label with a default font and size
      * @return Label
      */
-    private Label getCalendarLabel() {
+    protected Label getCalendarLabel() {
         Label label = new Label();
         label.setLayoutX(75);
         label.setLayoutY(5);
@@ -129,7 +129,7 @@ public class CalendarViewController extends CalendarController implements Initia
      * @param label Came from getCalendarLabel method
      * @return new pane with label associated with it
      */
-    private Pane getCalendarPane(Label label) {
+    protected Pane getCalendarPane(Label label) {
         Pane pane = new Pane();
         pane.getChildren().add(label);
         return pane;
