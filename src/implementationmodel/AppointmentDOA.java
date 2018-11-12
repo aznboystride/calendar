@@ -66,7 +66,7 @@ public class AppointmentDOA implements DelegationOfAuthority {
     public void Insert(Object t) {
         Appointment app = (Appointment) t;
         PreparedStatement preparedStatement = null;
-        String query = "insert into UserAccount VALUES (?,?,?,?,?,?)";
+        String query = "insert into Appointment  VALUES (?,?,?,?,?,?)";
         if(connection != null)
         {
             try
