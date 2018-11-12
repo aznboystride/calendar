@@ -92,7 +92,7 @@ public class WeeklyViewController extends CalendarViewController {
                         if(CalendarPoint.compare(firstDayOfWeek) < 0 && GridPane.getRowIndex(node) == 0) {
                             CalendarPoint.setPoint(node);
                             ((Label) p).setText(String.valueOf(((1 + CalendarPoint.GetDayNumber() + lastDayOfLastMonth - firstDayOfWeek + 7 * (week-1)) % lastDayOfLastMonth) == 0 ? lastDayOfLastMonth : ((1 + CalendarPoint.GetDayNumber() + lastDayOfLastMonth - firstDayOfWeek + 7 * (week-1)) % lastDayOfLastMonth)));
-                            ((Label) p).setStyle("-fx-text-fill: gray");
+                            if(week == 1) ((Label) p).setStyle("-fx-text-fill: gray");
                         } else if(CalendarPoint.compare(lastDayOfMonth + firstDayOfWeek - 1) > 0 && GridPane.getRowIndex(node) == 0) {
                             CalendarPoint.setPoint(node);
                             ((Label) p).setText(String.valueOf((week-1) * 7 + CalendarPoint.GetDayNumber() - lastDayOfMonth - firstDayOfWeek + 1));
