@@ -107,6 +107,15 @@ public class WeeklyViewController extends CalendarViewController {
     }
 
     /**
+     * Adds appointment to grid
+     * @param title name of appointment
+     * @param day day of the week in integer
+     */
+    private void addAppointment(String title, int day) {
+
+    }
+
+    /**
      * Initializes week combo box
      */
     private void initializeWeekCombo() {
