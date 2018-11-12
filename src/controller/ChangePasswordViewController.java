@@ -39,4 +39,20 @@ public class ChangePasswordViewController extends Controller {
             new AlertBox("Wrong Password!");
         }
     }
+
+    public void modifyAccountBtn(ActionEvent event) {
+
+    }
+
+    public void signOffBtn(ActionEvent event) {
+
+    }
+
+    public void createApptBtn(ActionEvent event) {
+
+    }
+
+    public void changePasswordBtn(ActionEvent event) {
+
+    }
 }
