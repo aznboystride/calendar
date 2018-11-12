@@ -187,8 +187,8 @@ public class CalendarViewController extends CalendarController implements Initia
      * @param month String month associated with calendar view
      * @param year int year associated with calendar view
      */
-    private void setCalendarRange(String month, int year) {
-        clearCalendarRange();
+    protected void setCalendarRange(String month, int year) {
+        clearCalendarRange(gridPane);
         int lastDayOfMonth = CalendarHelper.getLastDayOfMonth(month, year);
         int lastDayOfLastMonth = CalendarHelper.getLastDayOfLastMonth(month, year);
         int firstDayOfWeek = CalendarHelper.getFirstDayOfWeek(month, year);
@@ -216,7 +216,7 @@ public class CalendarViewController extends CalendarController implements Initia
      * This method clears all the labels and color of calendar Gridpane.
      * Typically called before resetting the Calendar Gridpane.
      */
-    private void clearCalendarRange() {
+    protected void clearCalendarRange(GridPane gridPane) {
         for(Node node : gridPane.getChildren()) {
             if(node instanceof Pane) {
                 for(Node p : ((Pane) node).getChildren())
