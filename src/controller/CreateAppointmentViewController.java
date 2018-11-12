@@ -97,4 +97,8 @@ public class CreateAppointmentViewController extends Controller implements Initi
     public void calendarBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
     }
+
+    public void importScheduleBtn(ActionEvent event) {
+        
+    }
 }
