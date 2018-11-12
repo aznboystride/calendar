@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.WeeklyView"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WeeklyViewController">
+    <top>
+        <AnchorPane prefHeight="158.0" prefWidth="700.0" style="-fx-background-color: #efeff5;" BorderPane.alignment="CENTER">
+            <children>
+                <MenuBar prefHeight="29.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#signOffBtn" text="Sign Off" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <RadioButton fx:id="weeklyView" layoutX="100.0" layoutY="97.0" mnemonicParsing="false" text="Weekly View" AnchorPane.leftAnchor="100.0">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="toggleview" />
+                    </toggleGroup></RadioButton>
+                <RadioButton fx:id="dailyView" layoutX="514.0" layoutY="98.0" mnemonicParsing="false" text="Daily View" toggleGroup="$toggleview" AnchorPane.rightAnchor="98.0" />
+                <RadioButton fx:id="calendarView" layoutX="296.0" layoutY="98.0" mnemonicParsing="false" selected="true" text="Calendar View" toggleGroup="$toggleview" />
+                <Label fx:id="monthLabel" layoutX="294.0" layoutY="49.0" text="monthlabel" textFill="#0d0fa1" underline="true">
+                    <font>
+                        <Font name="Euphemia UCAS Italic" size="24.0" />
+                    </font>
+                </Label>
+                <HBox layoutX="70.0" layoutY="131.0" prefHeight="23.0" prefWidth="624.0" spacing="75.0">
+                    <children>
+                        <Label text="Sun" />
+                        <Label text="Mon" />
+                        <Label text="Tue" />
+                        <Label text="Wed" />
+                        <Label text="Thu" />
+                        <Label text="Fri" />
+                        <Label text="Sat" />
+                    </children>
+                </HBox>
+            <ComboBox layoutX="516.0" layoutY="52.0" onAction="#weekBtn" prefHeight="27.0" prefWidth="93.0" promptText="Week 1" />
+            </children>
+        </AnchorPane>
+    </top>
+    <bottom>
+        <AnchorPane prefHeight="55.0" prefWidth="700.0" style="-fx-background-color: #efeff5;" BorderPane.alignment="CENTER">
+            <children>
+                <ColorPicker fx:id="colorPicker" layoutX="496.0" layoutY="13.0" onAction="#setCalendarColor" AnchorPane.rightAnchor="120.0" />
+                <ComboBox fx:id="month" layoutX="91.0" layoutY="14.0" onAction="#monthBtn" onKeyTyped="#keyTypedMonth" prefHeight="27.0" prefWidth="124.0" promptText="Month" AnchorPane.leftAnchor="120.0" />
+                <ComboBox fx:id="year" layoutX="303.0" layoutY="14.0" onAction="#yearBtn" prefHeight="27.0" prefWidth="96.0" promptText="Year" />
+            </children>
+        </AnchorPane>
+    </bottom>
+   <center>
+      <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints />
+          <ColumnConstraints />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+   </center>
+</BorderPane>
