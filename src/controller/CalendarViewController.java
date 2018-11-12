@@ -275,4 +275,16 @@ public class CalendarViewController extends CalendarController implements Initia
             }
         }
     }
+
+    public void modifyAccountBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Modify Account", "/fxml/ModifyAccountView.fxml");
+    }
+
+    public void changePasswordBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Change Password", "/fxml/ChangePasswordView.fxml");
+    }
+
+    public void createApptBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Create Appointment", "/fxml/CreateAppointmentView.fxml");
+    }
 }
