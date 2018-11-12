@@ -3,7 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
 
-public class WeeklyViewController extends Controller {
+public class WeeklyViewController extends CalendarViewController {
 
     public void signOffBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
@@ -26,6 +26,11 @@ public class WeeklyViewController extends Controller {
     }
 
     public void yearBtn(ActionEvent event) {
+
+    }
+
+    @Override
+    protected void initializeGridPaneCells() {
 
     }
 }

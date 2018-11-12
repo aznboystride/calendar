@@ -30,25 +30,25 @@ public class CalendarViewController extends CalendarController implements Initia
     private BorderPane borderPane;
 
     @FXML
-    private ComboBox year;
+    protected ComboBox year;
 
     @FXML
-    private ComboBox month;
+    protected ComboBox month;
 
     @FXML
-    private ColorPicker colorPicker;
+    protected ColorPicker colorPicker;
 
     @FXML
-    private Label monthLabel;
+    protected Label monthLabel;
 
     @FXML
-    private RadioButton calendarView;
+    protected RadioButton calendarView;
 
     @FXML
-    private RadioButton dailyView;
+    protected RadioButton dailyView;
 
     @FXML
-    private RadioButton weeklyView;
+    protected RadioButton weeklyView;
 
     private GridPane gridPane;
 
@@ -156,7 +156,7 @@ public class CalendarViewController extends CalendarController implements Initia
     /**
      * Initializes the year drop down all the way to 1920
      */
-    private void initializeYearDropDown() {
+    protected void initializeYearDropDown() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date(System.currentTimeMillis()));
         year.setPromptText(Integer.toString(calendar.get(Calendar.YEAR)));
@@ -168,7 +168,7 @@ public class CalendarViewController extends CalendarController implements Initia
     /**
      * Initializes the month drop down
      */
-    private void initializeMonthDropDown() {
+    protected void initializeMonthDropDown() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM");
         month.setPromptText(dateFormat.format(new Date(System.currentTimeMillis())));
         monthLabel.setText(month.getPromptText());
