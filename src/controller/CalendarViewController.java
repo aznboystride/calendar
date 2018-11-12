@@ -24,7 +24,7 @@ import helper.CalendarHelper;
  * This class controller is largely responsible for the creation
  * and the manipulation of the calendar view.
  */
-public class CalendarViewController extends Controller implements Initializable {
+public class CalendarViewController extends CalendarController implements Initializable {
 
     @FXML
     private BorderPane borderPane;
@@ -71,7 +71,7 @@ public class CalendarViewController extends Controller implements Initializable 
     /**
      * Initializes all of the radio buttons in toggleview
      */
-    private void initializeToggleView() {
+    protected void initializeToggleView() {
         calendarView.setOnAction(event ->
                 LoadFXML(
                         event,
@@ -98,7 +98,7 @@ public class CalendarViewController extends Controller implements Initializable 
     /**
      * Initializes gridpane cells and add a blank pane to each cell
      */
-    private void initializeGridPaneCells() {
+    protected void initializeGridPaneCells() {
         gridPane = new GridPane();
         Pane pane;
         Label label;
@@ -138,7 +138,7 @@ public class CalendarViewController extends Controller implements Initializable 
     /**
      * Sets the default constraints of the calendar gridpane
      */
-    private void setGridPaneConstraints() {
+    protected void setGridPaneConstraints() {
         gridPane.setGridLinesVisible(false);
         gridPane.setAlignment(Pos.CENTER);
         ColumnConstraints columnConstraints = new ColumnConstraints(0);
