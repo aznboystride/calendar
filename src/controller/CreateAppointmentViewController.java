@@ -1,6 +1,7 @@
 package controller;
 
 import implementationmodel.AppointmentDOA;
+import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +15,11 @@ import java.net.URL;
 import java.sql.Time;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import javafx.scene.Node;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  * Responsible for appointment creation view
@@ -99,6 +105,13 @@ public class CreateAppointmentViewController extends Controller implements Initi
     }
 
     public void importScheduleBtn(ActionEvent event) {
-        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Import Schedule");
+        fileChooser.getExtensionFilters().addAll(
+                new ExtensionFilter("Text Files", "*.txt"),
+                new ExtensionFilter("All Files", "*"));
+        File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+        if(selectedFile != null) {
+        }
     }
 }
