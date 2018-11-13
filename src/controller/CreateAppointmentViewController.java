@@ -119,7 +119,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
 
     public void exportScheduleBtn(ActionEvent event) {
         String content = "";
-        SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat stf = new SimpleDateFormat("hh:mm a");
         List<Appointment> appointmentList = AppointmentDOA.GetInstance().GetList();
         for(Appointment app : appointmentList) {
@@ -127,7 +127,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
             content += (app.getPlace() + "\n");
             content += (app.getEventName() + "\n");
             content += (sdf.format(app.getDate()) + "\n");
-            content += ((sdf.format(new Date(app.getTime().getTime()))) + "\n");
+            content += ((stf.format(new Date(app.getTime().getTime()))) + "\n");
         }
         FileHelper.SaveFile(event, content);
     }

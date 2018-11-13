@@ -48,5 +48,6 @@
          </menus>
       </MenuBar>
       <Button layoutX="463.0" layoutY="130.0" mnemonicParsing="false" onAction="#importScheduleBtn" prefHeight="38.0" prefWidth="119.0" text="Import Schedule" />
+      <Button layoutX="463.0" layoutY="181.0" mnemonicParsing="false" onAction="#exportScheduleBtn" prefHeight="38.0" prefWidth="119.0" text="Export Schedule" />
    </children>
 </AnchorPane>
