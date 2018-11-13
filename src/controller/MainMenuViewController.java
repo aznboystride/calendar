@@ -1,17 +1,20 @@
 package controller;
 
+import implementationmodel.AppointmentDOA;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import implementationmodel.UserAccountDOA;
+import java.util.ArrayList;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import object.AlertBox;
 import object.User;
 import object.UserAccount;
 import java.util.List;
+import object.Appointment;
 
 /**
  * This is the main menu controller associated with the view
@@ -53,6 +56,8 @@ public class MainMenuViewController extends Controller {
             if(user.getUserName().equalsIgnoreCase(username.getText().trim())) {
                 if(user.getPassword().equals(password.getText())) {
                     User.GetInstance().setUserAccount(user);
+                    User.GetInstance().setAppointments((ArrayList<Appointment>) AppointmentDOA.GetInstance().GetList());
+                    System.out.println(User.GetInstance());
                     LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
                     return;
                 }

@@ -46,6 +46,10 @@ public class UserAccount
 
     @Override
     public String toString() {
+        String appstr = "";
+        for(Appointment app : appointments) {
+            appstr += (app.toString() + "\n");
+        }
         return    userName + "\n"
                 + firstName + "\n"
                 + lastName + "\n"
@@ -53,7 +57,8 @@ public class UserAccount
                 + gender + "\n"
                 + dateOfBirth + "\n"
                 + age + "\n"
-                + password + "\n";
+                + password + "\n"
+                + appstr;
     }
 
     private int getDiffYears(Date first, Date last) {

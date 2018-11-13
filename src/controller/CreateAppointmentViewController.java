@@ -117,7 +117,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
         }
     }
 
-    public void exportScheduleBtn(ActionEvent event) {
+        public void exportScheduleBtn(ActionEvent event) {
         String content = "";
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat stf = new SimpleDateFormat("hh:mm a");
