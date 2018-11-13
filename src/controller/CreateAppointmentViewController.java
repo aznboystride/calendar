@@ -11,10 +11,15 @@ import javafx.scene.control.TextField;
 import object.Appointment;
 import object.User;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Time;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+
 import javafx.scene.Node;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -112,6 +117,17 @@ public class CreateAppointmentViewController extends Controller implements Initi
                 new ExtensionFilter("All Files", "*"));
         File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
         if(selectedFile != null) {
+            List<Appointment> appointmentList = parseAppointmentsFromFile(selectedFile);
         }
+    }
+
+    private List<Appointment> parseAppointmentsFromFile(File selectedFile) {
+        String username, withPerson, place, event, time;
+        try {
+            Scanner sc = new Scanner(selectedFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

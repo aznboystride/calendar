@@ -160,4 +160,8 @@ public class UserAccount
     public void createAppointment(Appointment appointment) {
         appointments.add(appointment);
     }
+
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 }
