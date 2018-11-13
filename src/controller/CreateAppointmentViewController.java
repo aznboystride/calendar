@@ -1,5 +1,7 @@
 package controller;
 
+import helper.DateTimeParser;
+import helper.FileHelper;
 import implementationmodel.AppointmentDOA;
 import java.io.File;
 import javafx.event.ActionEvent;
@@ -15,6 +17,8 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Time;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -118,13 +122,33 @@ public class CreateAppointmentViewController extends Controller implements Initi
         File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
         if(selectedFile != null) {
             List<Appointment> appointmentList = parseAppointmentsFromFile(selectedFile);
+            AppointmentDOA.GetInstance().DropTable();
+            for(Appointment app : appointmentList) {
+                AppointmentDOA.GetInstance().Insert(app);
+            }
         }
     }
 
     private List<Appointment> parseAppointmentsFromFile(File selectedFile) {
-        String username, withPerson, place, event, time;
+        FileHelper.removeExtraSpacesFromFile(selectedFile);
+        String withPerson, place, event, sdate, stime;
+        Time time;
+        Date date;
+        List<Appointment> appointmentList = new ArrayList<>();
+
         try {
             Scanner sc = new Scanner(selectedFile);
+            while(sc.hasNextLine()) {
+                withPerson = sc.nextLine();
+                place = sc.nextLine();
+                event = sc.nextLine();
+                sdate = sc.nextLine();
+                stime = sc.nextLine();
+                time = DateTimeParser.parseTimeFromString(stime, "hh:mm a");
+                date = DateTimeParser.parseDateFromString(sdate, "mm/dd/yyyy");
+                appointmentList.add(new Appointment(date, time, place, event, User.GetInstance().getUserName(), withPerson));
+            }
+            return appointmentList;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
