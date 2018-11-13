@@ -16,6 +16,7 @@ public class FileHelper {
             }
             PrintWriter writer = new PrintWriter(f);
             writer.write(content.trim());
+            writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
