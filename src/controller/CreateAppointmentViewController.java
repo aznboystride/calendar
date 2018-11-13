@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Time;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -114,6 +115,21 @@ public class CreateAppointmentViewController extends Controller implements Initi
                 AppointmentDOA.GetInstance().Insert(app);
             }
         }
+    }
+
+    public void exportScheduleBtn(ActionEvent event) {
+        String content = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
+        SimpleDateFormat stf = new SimpleDateFormat("hh:mm a");
+        List<Appointment> appointmentList = AppointmentDOA.GetInstance().GetList();
+        for(Appointment app : appointmentList) {
+            content += (app.getWithperson() + "\n");
+            content += (app.getPlace() + "\n");
+            content += (app.getEventName() + "\n");
+            content += (sdf.format(app.getDate()) + "\n");
+            content += ((sdf.format(new Date(app.getTime().getTime()))) + "\n");
+        }
+        FileHelper.SaveFile(event, content);
     }
 
     private List<Appointment> parseAppointmentsFromFile(File selectedFile) {
