@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 
 public class DateTimeParser {
 
-    Time parseTimeFromString(String t, String f) {
+    public static Time parseTimeFromString(String t, String f) {
         SimpleDateFormat sdf = new SimpleDateFormat(f);
         try {
             return new Time(sdf.parse(t).getTime());
@@ -17,7 +17,7 @@ public class DateTimeParser {
         return null;
     }
 
-    Date parseDateFromString(String t, String f) {
+    public static Date parseDateFromString(String t, String f) {
         SimpleDateFormat sdf = new SimpleDateFormat(f);
         try {
             return new Date(sdf.parse(t).getTime());
