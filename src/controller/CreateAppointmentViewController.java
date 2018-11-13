@@ -17,18 +17,10 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Time;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
-import javafx.scene.Node;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  * Responsible for appointment creation view
@@ -114,12 +106,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
     }
 
     public void importScheduleBtn(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Import Schedule");
-        fileChooser.getExtensionFilters().addAll(
-                new ExtensionFilter("Text Files", "*.txt"),
-                new ExtensionFilter("All Files", "*"));
-        File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+        File selectedFile = FileHelper.ChooseFileOpen(event);
         if(selectedFile != null) {
             List<Appointment> appointmentList = parseAppointmentsFromFile(selectedFile);
             AppointmentDOA.GetInstance().DropTable();
