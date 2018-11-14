@@ -123,24 +123,27 @@ public class CreateAppointmentViewController extends Controller implements Initi
         SimpleDateFormat stf = new SimpleDateFormat("hh:mm a");
         List<Appointment> appointmentList = AppointmentDOA.GetInstance().GetList();
         for(Appointment app : appointmentList) {
-            content += (app.getWithperson() + "\n");
-            content += (app.getPlace() + "\n");
-            content += (app.getEventName() + "\n");
-            content += (sdf.format(app.getDate()) + "\n");
-            content += ((stf.format(new Date(app.getTime().getTime()))) + "\n");
+            if(app.getUsername().equalsIgnoreCase(User.GetInstance().getUserName())) {
+                content += (app.getWithperson() + "\n");
+                content += (app.getPlace() + "\n");
+                content += (app.getEventName() + "\n");
+                content += (sdf.format(app.getDate()) + "\n");
+                content += ((stf.format(new Date(app.getTime().getTime()))) + "\n");
+            }
         }
         FileHelper.SaveFile(event, content);
     }
 
     private List<Appointment> parseAppointmentsFromFile(File selectedFile) {
         FileHelper.removeExtraSpacesFromFile(selectedFile);
-        String withPerson, place, event, sdate, stime;
+        String username, withPerson, place, event, sdate, stime;
         Time time;
         Date date;
         List<Appointment> appointmentList = new ArrayList<>();
 
         try {
             Scanner sc = new Scanner(selectedFile);
+            username = sc.nextLine();
             while(sc.hasNextLine()) {
                 withPerson = sc.nextLine();
                 place = sc.nextLine();
@@ -149,7 +152,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
                 stime = sc.nextLine();
                 time = DateTimeParser.parseTimeFromString(stime, "hh:mm a");
                 date = DateTimeParser.parseDateFromString(sdate, "mm/dd/yyyy");
-                appointmentList.add(new Appointment(date, time, place, event, User.GetInstance().getUserName(), withPerson));
+                appointmentList.add(new Appointment(date, time, place, event, username, withPerson));
             }
             return appointmentList;
         } catch (FileNotFoundException e) {
