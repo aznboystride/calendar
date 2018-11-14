@@ -2,6 +2,8 @@ package object;
 
 import java.sql.Time;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class Appointment {
 
@@ -19,6 +21,28 @@ public class Appointment {
 
     public Appointment() {
 
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, time);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Appointment app = (Appointment) o;
+        if(o == this) {
+            return true;
+        }
+        if(!(o instanceof Appointment)) {
+            return false;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        if(sdf.format(app.getDate()).equals(sdf.format(date))) {
+            return true;
+        }
+        sdf = new SimpleDateFormat("hh:mm");
+        return sdf.format(app.getTime()).equals(sdf.format(time));
     }
 
     public String getWithperson() {
