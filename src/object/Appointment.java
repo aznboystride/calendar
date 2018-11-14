@@ -39,10 +39,10 @@ public class Appointment {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         if(sdf.format(app.getDate()).equals(sdf.format(date))) {
-            return true;
+            sdf = new SimpleDateFormat("hh");
+            return sdf.format(app.getTime()).equals(sdf.format(time));
         }
-        sdf = new SimpleDateFormat("hh:mm");
-        return sdf.format(app.getTime()).equals(sdf.format(time));
+        return false;
     }
 
     public String getWithperson() {
