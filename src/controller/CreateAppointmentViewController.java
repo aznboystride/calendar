@@ -110,7 +110,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
         File selectedFile = FileHelper.ChooseFileOpen(event);
         if(selectedFile != null) {
             List<Appointment> appointmentList = parseAppointmentsFromFile(selectedFile);
-            AppointmentDOA.GetInstance().DropTable();
+            List<Appointment> oldList = AppointmentDOA.GetInstance().GetList();
             for(Appointment app : appointmentList) {
                 AppointmentDOA.GetInstance().Insert(app);
             }
