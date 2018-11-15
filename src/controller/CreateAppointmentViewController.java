@@ -109,11 +109,12 @@ public class CreateAppointmentViewController extends Controller implements Initi
     public void importScheduleBtn(ActionEvent event) {
         File selectedFile = FileHelper.ChooseFileOpen(event);
         if(selectedFile != null) {
+            AppointmentDOA.GetInstance().DropTable();
             List<Appointment> appointmentList = parseAppointmentsFromFile(selectedFile);
-            List<Appointment> oldList = AppointmentDOA.GetInstance().GetList();
             for(Appointment app : appointmentList) {
                 AppointmentDOA.GetInstance().Insert(app);
             }
+            User.GetInstance().setAppointments((ArrayList<Appointment>)appointmentList);
         }
     }
 
@@ -143,7 +144,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
 
         try {
             Scanner sc = new Scanner(selectedFile);
-            username = sc.nextLine();
+            username = User.GetInstance().getUserName();
             while(sc.hasNextLine()) {
                 withPerson = sc.nextLine();
                 place = sc.nextLine();
