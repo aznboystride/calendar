@@ -50,7 +50,7 @@ public class WeeklyViewController extends CalendarViewController {
 
     @Override
     protected void setGridPaneConstraints() {
-
+        gridPane.setGridLinesVisible(false);
     }
 
 
@@ -98,11 +98,11 @@ public class WeeklyViewController extends CalendarViewController {
                             if(week == 1) ((Label) p).setStyle("-fx-text-fill: gray");
                         } else if(CalendarPoint.compare(lastDayOfMonth + firstDayOfWeek - 1) > 0 && GridPane.getRowIndex(node) == 0) {
                             CalendarPoint.setPoint(node);
-                            ((Label) p).setText(String.valueOf((week-1) * 7 + CalendarPoint.GetDayNumber() - lastDayOfMonth - firstDayOfWeek + 1));
+                            ((Label) p).setText(String.valueOf(((week-1) * 7 + 1 + CalendarPoint.GetDayNumber() - firstDayOfWeek) % lastDayOfMonth == 0 ? lastDayOfMonth : ((week-1) * 7 + 1 + CalendarPoint.GetDayNumber() - firstDayOfWeek) % lastDayOfMonth));
                             ((Label) p).setStyle("-fx-text-fill: gray");
                         } else if(GridPane.getRowIndex(node) == 0){
                             CalendarPoint.setPoint(node);
-                            ((Label) p).setText(String.valueOf((week-1) * 7 + 1 + CalendarPoint.GetDayNumber() - firstDayOfWeek));
+                            ((Label) p).setText(String.valueOf(((week-1) * 7 + 1 + CalendarPoint.GetDayNumber() - firstDayOfWeek) % lastDayOfMonth == 0 ? lastDayOfMonth : ((week-1) * 7 + 1 + CalendarPoint.GetDayNumber() - firstDayOfWeek) % lastDayOfMonth));
                         }
                     }
                 }
@@ -124,7 +124,7 @@ public class WeeklyViewController extends CalendarViewController {
      * Initializes week combo box
      */
     private void initializeWeekCombo() {
-        for(short i = 0; i < 4; i++) {
+        for(short i = 0; i < 5; i++) {
             weekCombo.getItems().add("Week " + (i+1));
         }
     }
