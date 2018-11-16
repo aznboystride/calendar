@@ -168,7 +168,7 @@ public class CalendarViewController extends CalendarController implements Initia
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date(System.currentTimeMillis()));
         year.setPromptText(Integer.toString(calendar.get(Calendar.YEAR)));
-        for (int i = 2019; i >= 1920; i--) {
+        for (int i = 2025; i >= 1920; i--) {
             year.getItems().add(i);
         }
     }
