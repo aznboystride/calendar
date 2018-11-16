@@ -26,4 +26,9 @@ public class DateTimeParser {
         }
         return null;
     }
+
+    public static String getHourMinFromDate(Time time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+        return sdf.format(new Date(time.getTime()));
+    }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import helper.CalendarPoint;
+import helper.DateTimeParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -231,7 +232,8 @@ public class CalendarViewController extends CalendarController implements Initia
                     Calendar c = Calendar.getInstance();
                     c.setTime(app.getDate());
                     if(c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(d.getText())) {
-                        a.setText(app.getWithperson() + "\n" + app.getTime().toString());
+                        a.setText(app.getWithperson() + "\n" + DateTimeParser.getHourMinFromDate(app.getTime()));
+                        a.setStyle("-fx-text-fill: green");
                         break;
                     }
                 }
