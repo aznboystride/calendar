@@ -12,7 +12,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import javafx.geometry.HPos;
+import object.Appointment;
+import object.User;
 
 public class WeeklyViewController extends CalendarViewController {
 
@@ -27,13 +31,18 @@ public class WeeklyViewController extends CalendarViewController {
      */
     @Override
     protected void initializeGridPaneCells() {
-        Label l;
-        Pane p;
-        for(int col = 0; col < 7; col++) {
-            for(int row = 0; row < 5; row++) {
-                l = getCalendarLabel(80, 5);
-                p = getCalendarPane(l);
-                gridPane.add(p, col, row);
+        //gridPane = new GridPane();
+        Pane pane;
+        Label label;
+        Label label2;
+        for (int col = 0; col < 7; col++) {
+            for (int row = 0; row < 6; row++) {
+                label = getCalendarLabel(75, 5, "date");
+                label2 = getCalendarLabel(40, 20, "app");
+                pane = getCalendarPane(label, label2);
+                GridPane.setHalignment(label, HPos.RIGHT);
+                GridPane.setHalignment(label2, HPos.LEFT);
+                gridPane.add(pane, col, row);
             }
         }
     }
@@ -43,13 +52,6 @@ public class WeeklyViewController extends CalendarViewController {
 
     }
 
-    protected Label getCalendarLabel(int x, int y) {
-        Label label = new Label();
-        label.setLayoutX(x);
-        label.setLayoutY(y);
-        label.setFont(Font.font("verdana", 10));
-        return label;
-    }
 
     /**
      * Initializes the calendar gridpane and month dropdown and year dropdown
@@ -86,7 +88,7 @@ public class WeeklyViewController extends CalendarViewController {
         for (Node node : gridPane.getChildren()) {
             if (node instanceof Pane) {
                 for(Node p : ((Pane) node).getChildren()) {
-                    if (p instanceof Label) {
+                    if (p instanceof Label && ((Label) p).getId().equals("date")) {
                         CalendarPoint.setPoint(node);
                         CalendarPoint.setY(0);
                         if(CalendarPoint.compare(firstDayOfWeek) < 0 && GridPane.getRowIndex(node) == 0) {
@@ -105,6 +107,7 @@ public class WeeklyViewController extends CalendarViewController {
                 }
             }
         }
+        addAppointmentToCalendar();
     }
 
     /**
@@ -164,5 +167,25 @@ public class WeeklyViewController extends CalendarViewController {
      */
     public void signOffBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
+    }
+    
+    @Override
+    protected void addAppointmentToCalendar() {
+        for(Node node: gridPane.getChildren()) {
+            if(node instanceof Pane) {
+                if(GridPane.getRowIndex(node) != 0)
+                    continue;
+                Label d = CalendarHelper.getDateLabel((Pane) node);
+                Label a = CalendarHelper.getAppLabel((Pane) node);
+                for(Appointment app : User.GetInstance().getAppointments()) {
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(app.getDate());
+                    if(c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(d.getText())) {
+                        a.setText(app.getWithperson() + "\n" + app.getTime().toString());
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

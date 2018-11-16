@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 /**
  * To be used by CalendarViewController class.
@@ -25,6 +28,30 @@ public class CalendarHelper {
         }
         calendar.setTime(date);
         return calendar.get(Calendar.MONTH) + 1;
+    }
+    
+    /**
+     * Returns Date Label
+     */
+    public static Label getDateLabel(Pane p) {
+        for(Node n : p.getChildren()) {
+            if(n instanceof Label && ((Label)n).getId().equals("date")) {
+                return (Label) n;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Returns App Label
+     */
+    public static Label getAppLabel(Pane p) {
+        for(Node n : p.getChildren()) {
+            if(n instanceof Label && ((Label)n).getId().equals("app")) {
+                return (Label) n;
+            }
+        }
+        return null;
     }
 
     /**

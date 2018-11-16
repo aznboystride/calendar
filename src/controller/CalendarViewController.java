@@ -19,6 +19,8 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import helper.CalendarHelper;
+import object.Appointment;
+import object.User;
 
 /**
  * This class controller is largely responsible for the creation
@@ -66,6 +68,7 @@ public class CalendarViewController extends CalendarController implements Initia
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
         setGridPaneConstraints();
         borderPane.setCenter(gridPane);
+        addAppointmentToCalendar();
     }
 
     /**
@@ -102,11 +105,14 @@ public class CalendarViewController extends CalendarController implements Initia
         gridPane = new GridPane();
         Pane pane;
         Label label;
+        Label label2;
         for (int col = 0; col < 7; col++) {
             for (int row = 0; row < 6; row++) {
-                label = getCalendarLabel();
-                pane = getCalendarPane(label);
+                label = getCalendarLabel(75, 5, "date");
+                label2 = getCalendarLabel(40, 20, "app");
+                pane = getCalendarPane(label, label2);
                 GridPane.setHalignment(label, HPos.RIGHT);
+                GridPane.setHalignment(label2, HPos.LEFT);
                 gridPane.add(pane, col, row);
             }
         }
@@ -116,10 +122,11 @@ public class CalendarViewController extends CalendarController implements Initia
      * Creates and returns a Label with a default font and size
      * @return Label
      */
-    protected Label getCalendarLabel() {
+    protected Label getCalendarLabel(int x, int y, String id) {
         Label label = new Label();
-        label.setLayoutX(75);
-        label.setLayoutY(5);
+        label.setId(id);
+        label.setLayoutX(x);
+        label.setLayoutY(y);
         label.setFont(Font.font("verdana", 10));
         return label;
     }
@@ -129,9 +136,9 @@ public class CalendarViewController extends CalendarController implements Initia
      * @param label Came from getCalendarLabel method
      * @return new pane with label associated with it
      */
-    protected Pane getCalendarPane(Label label) {
+    protected Pane getCalendarPane(Label label, Label label2) {
         Pane pane = new Pane();
-        pane.getChildren().add(label);
+        pane.getChildren().addAll(label, label2);
         return pane;
     }
 
@@ -195,7 +202,7 @@ public class CalendarViewController extends CalendarController implements Initia
         for (Node node : gridPane.getChildren()) {
             if (node instanceof Pane) {
                 for(Node p : ((Pane) node).getChildren()) {
-                    if (p instanceof Label) {
+                    if (p instanceof Label && ((Label) p).getId().equals("date")) {
                         CalendarPoint.setPoint(node);
                         if(CalendarPoint.compare(firstDayOfWeek) < 0 && GridPane.getRowIndex(node) == 0) {
                             ((Label) p).setText(String.valueOf(1 + CalendarPoint.GetDayNumber() + lastDayOfLastMonth - firstDayOfWeek));
@@ -211,6 +218,27 @@ public class CalendarViewController extends CalendarController implements Initia
             }
         }
     }
+    
+    /**
+     * Adds all the appointments to calendar
+     */
+    protected void addAppointmentToCalendar() {
+        for(Node node: gridPane.getChildren()) {
+            if(node instanceof Pane) {
+                Label d = CalendarHelper.getDateLabel((Pane) node);
+                Label a = CalendarHelper.getAppLabel((Pane) node);
+                for(Appointment app : User.GetInstance().getAppointments()) {
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(app.getDate());
+                    if(c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(d.getText())) {
+                        a.setText(app.getWithperson() + "\n" + app.getTime().toString());
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
 
     /**
      * This method clears all the labels and color of calendar Gridpane.
