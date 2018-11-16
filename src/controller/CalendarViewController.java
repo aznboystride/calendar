@@ -69,7 +69,6 @@ public class CalendarViewController extends CalendarController implements Initia
         setCalendarRange(month.getPromptText(), Integer.parseInt(year.getPromptText()));
         setGridPaneConstraints();
         borderPane.setCenter(gridPane);
-        addAppointmentToCalendar();
     }
 
     /**
@@ -218,6 +217,7 @@ public class CalendarViewController extends CalendarController implements Initia
                 }
             }
         }
+        addAppointmentToCalendar();
     }
     
     /**
@@ -226,14 +226,16 @@ public class CalendarViewController extends CalendarController implements Initia
     protected void addAppointmentToCalendar() {
         for(Node node: gridPane.getChildren()) {
             if(node instanceof Pane) {
-                Label d = CalendarHelper.getDateLabel((Pane) node);
-                Label a = CalendarHelper.getAppLabel((Pane) node);
+                Label dateLabel = CalendarHelper.getDateLabel((Pane) node);
+                Label appLabel = CalendarHelper.getAppLabel((Pane) node);
                 for(Appointment app : User.GetInstance().getAppointments()) {
-                    Calendar c = Calendar.getInstance();
-                    c.setTime(app.getDate());
-                    if(c.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(d.getText())) {
-                        a.setText(app.getWithperson() + "\n" + DateTimeParser.getHourMinFromDate(app.getTime()));
-                        a.setStyle("-fx-text-fill: green");
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(app.getDate());
+                    if(calendar.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(dateLabel.getText()) &&
+                            calendar.get(Calendar.YEAR) == Integer.parseInt(year.getPromptText()) &&
+                            calendar.get(Calendar.MONTH) == CalendarHelper.getMonthFromString(month.getPromptText()) - 1) {
+                        appLabel.setText(app.getWithperson() + "\n" + DateTimeParser.getHourMinFromDate(app.getTime()));
+                        appLabel.setStyle("-fx-text-fill: green");
                         break;
                     }
                 }
