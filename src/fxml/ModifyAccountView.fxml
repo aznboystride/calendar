@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyAccountViewController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyAccountViewController">
     <children>
         <Label layoutX="25.0" layoutY="36.0" text="Modify Account Information:">
             <font>
@@ -47,9 +54,9 @@
         </MenuBar>
         <VBox layoutX="300.0" layoutY="147.0" prefHeight="106.0" prefWidth="235.0" spacing="50.0">
             <children>
-                <Button fx:id="mainMenuBtn" mnemonicParsing="false" prefHeight="27.0" prefWidth="235.0" text="Main Menu" />
-                <Button fx:id="calendarViewBtn" mnemonicParsing="false" prefHeight="27.0" prefWidth="235.0" text="Calendar View" />
-                <Button mnemonicParsing="false" onAction="#changePasswordBtnPressed" prefHeight="27.0" prefWidth="237.0" text="Change Password" />
+                <Button mnemonicParsing="false" onAction="#mainMenuBtn" prefHeight="27.0" prefWidth="235.0" text="Main Menu" />
+                <Button mnemonicParsing="false" onAction="#calendarViewBtn" prefHeight="27.0" prefWidth="235.0" text="Calendar View" />
+                <Button mnemonicParsing="false" onAction="#changePasswordBtnPressed" prefHeight="27.0" prefWidth="237.0" text="Change Password / Username" />
             </children>
         </VBox>
         <Label fx:id="labelField" layoutX="305.0" layoutY="350.0" prefHeight="17.0" prefWidth="235.0" />
