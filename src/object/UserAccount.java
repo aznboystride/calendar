@@ -29,6 +29,20 @@ public class UserAccount
     private String password;
 
     private ArrayList<Appointment> appointments;
+    
+    public UserAccount() {}
+    
+    public UserAccount(String userName) {
+        this.userName = userName;
+        firstName = "";
+        lastName = "";
+        email = "";
+        gender = 'M';
+        dateOfBirth = new Date(System.currentTimeMillis());
+        age = 0;
+        password = "";
+        appointments = new ArrayList<Appointment>();
+    }
 
     public UserAccount(String userName, String firstName, String lastName, String email,
                        char gender, Date dateOfBirth, String password)

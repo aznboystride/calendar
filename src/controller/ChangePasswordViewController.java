@@ -3,14 +3,19 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import implementationmodel.UserAccountDOA;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 import object.AlertBox;
 import object.User;
+import object.UserAccount;
 
 /**
- * This controller is the one controlling the changepassword view fxml
+ * This controller is the one controlling the change password view
  */
-public class ChangePasswordViewController extends Controller {
+public class ChangePasswordViewController extends Controller implements Initializable {
 
     @FXML
     private PasswordField oldPass;
@@ -20,6 +25,9 @@ public class ChangePasswordViewController extends Controller {
 
     @FXML
     private PasswordField confirmPass;
+    
+    @FXML
+    private TextField username;
 
     /**
      * When this button is clicked, the password of the user gets updated
@@ -27,10 +35,22 @@ public class ChangePasswordViewController extends Controller {
      */
     public void updateBtn(ActionEvent event) {
         UserAccountDOA db = UserAccountDOA.GetInstance();
+        UserAccount newAccount = new UserAccount(username.getText());
+        if(username.getText().length() == 0) {
+            new AlertBox("Username Field Empty!");
+            return;
+        }
+        else if(!newAccount.getUserName().equalsIgnoreCase(User.GetInstance().getUserName())) {
+            if(db.Exists(newAccount)) {
+                new AlertBox("Username already exists!");
+                return;
+            }
+        }
         if(User.GetInstance().getPassword().equals(oldPass.getText())) {
             if(newPass.getText().equals(confirmPass.getText())) {
                 User.GetInstance().setPassword(newPass.getText());
-                db.Update(User.GetInstance());
+                db.ChangeUsernameAndPassword(User.GetInstance().getUserName(), username.getText(), newPass.getText());
+                User.GetInstance().setUserName(username.getText());
                 LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
             } else {
                 new AlertBox("Passwords Don't Match!");
@@ -62,5 +82,10 @@ public class ChangePasswordViewController extends Controller {
 
     public void calendarBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        username.setText(User.GetInstance().getUserName());
     }
 }

@@ -13,7 +13,7 @@ import object.User;
 import object.UserAccount;
 
 /**
- * This controller is associated with the modifyaccount view
+ * This controller is associated with the modify account view controller
  */
 public class ModifyAccountViewController extends Controller implements Initializable {
     
