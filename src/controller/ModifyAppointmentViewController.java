@@ -108,7 +108,6 @@ public class ModifyAppointmentViewController extends Controller implements Initi
                     app.getTime().equals(DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"))) {
                 User.GetInstance().getAppointments().remove(app);
                 initAppList();
-                System.out.println("EXECUTED");
                 break;
             }
         }
