@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import object.AlertBox;
 import object.Appointment;
 import object.User;
 
@@ -56,6 +57,12 @@ public class CreateAppointmentViewController extends Controller implements Initi
                 User.GetInstance().getUserName(),
                 username.getText()
         );
+        if(appointment.getDate().compareTo(Date.valueOf(datePicker.getValue())) == 0 &&
+                new Time(appointment.getTime().getTime() - 1000 * 60 * 30).getTime() < appointment.getTime().getTime() &&
+                appointment.getTime().getTime() < new Time(appointment.getTime().getTime() + 1000 * 60 * 60).getTime()) {
+            new AlertBox("Appointment is too close to existing appointment!");
+            return;
+        }
         User.GetInstance().createAppointment(appointment);
         AppointmentDOA.GetInstance().Insert(appointment);
     }
