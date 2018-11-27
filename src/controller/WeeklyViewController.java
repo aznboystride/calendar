@@ -205,4 +205,8 @@ public class WeeklyViewController extends CalendarViewController {
             }
         }
     }
+
+    public void modifyApptBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Modify Appomentsint", "/fxml/ModifyAppointmentView.fxml");
+    }
 }

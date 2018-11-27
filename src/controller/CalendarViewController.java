@@ -320,4 +320,8 @@ public class CalendarViewController extends CalendarController implements Initia
     public void createApptBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Create Appointment", "/fxml/CreateAppointmentView.fxml");
     }
+
+    public void modifyApptBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Modify Appomentsint", "/fxml/ModifyAppointmentView.fxml");
+    }
 }

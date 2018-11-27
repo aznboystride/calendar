@@ -19,6 +19,7 @@
                     <MenuItem mnemonicParsing="false" onAction="#signOffBtn" text="Sign Off" />
                         <MenuItem mnemonicParsing="false" onAction="#changePasswordBtn" text="Change Password" />
                         <MenuItem mnemonicParsing="false" onAction="#createApptBtn" text="Create Appointment" />
+                      <MenuItem mnemonicParsing="false" onAction="#modifyApptBtn" text="Modify Appointment" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">

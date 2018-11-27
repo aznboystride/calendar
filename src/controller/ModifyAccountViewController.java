@@ -102,4 +102,8 @@ public class ModifyAccountViewController extends Controller implements Initializ
         genderField.setText(gender);
         dobField.setValue(date.toLocalDate());
     }
+
+    public void modifyApptBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Modify Appomentsint", "/fxml/ModifyAppointmentView.fxml");
+    }
 }

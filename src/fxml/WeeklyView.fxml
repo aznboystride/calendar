@@ -20,6 +20,7 @@
                                 <MenuItem mnemonicParsing="false" onAction="#signOffBtn" text="Sign Off" />
                                 <MenuItem mnemonicParsing="false" onAction="#changePasswordBtn" text="Change Password" />
                                 <MenuItem mnemonicParsing="false" onAction="#createApptBtn" text="Create Appointment" />
+                        <MenuItem mnemonicParsing="false" onAction="#modifyApptBtn" text="Modify Appointment" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
@@ -34,7 +35,7 @@
                         </Menu>
                     </menus>
                 </MenuBar>
-                <RadioButton fx:id="weeklyView" layoutX="100.0" layoutY="97.0" selected="true" mnemonicParsing="false" text="Weekly View" AnchorPane.leftAnchor="100.0">
+                <RadioButton fx:id="weeklyView" layoutX="100.0" layoutY="97.0" mnemonicParsing="false" selected="true" text="Weekly View" AnchorPane.leftAnchor="100.0">
                     <toggleGroup>
                         <ToggleGroup fx:id="toggleview" />
                     </toggleGroup></RadioButton>

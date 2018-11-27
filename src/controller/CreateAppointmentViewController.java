@@ -170,4 +170,8 @@ public class CreateAppointmentViewController extends Controller implements Initi
         }
         return null;
     }
+
+    public void modifyApptBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Modify Appomentsint", "/fxml/ModifyAppointmentView.fxml");
+    }
 }

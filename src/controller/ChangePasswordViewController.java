@@ -90,4 +90,8 @@ public class ChangePasswordViewController extends Controller implements Initiali
     public void initialize(URL location, ResourceBundle resources) {
         username.setText(User.GetInstance().getUserName());
     }
+
+    public void modifyApptBtn(ActionEvent event) {
+        LoadFXML(event, "Calendar App - Modify Appomentsint", "/fxml/ModifyAppointmentView.fxml");
+    }
 }
