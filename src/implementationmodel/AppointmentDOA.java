@@ -127,11 +127,28 @@ public class AppointmentDOA implements DelegationOfAuthority {
     public void Delete(Object o) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(String.format("DELETE FROM Appointment " +
-                    "WHERE Appointment.withperson = ", o.toString()));
+                    "WHERE Appointment.withperson = ", ((Appointment)o).getWithperson()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }g
+    }
+
+    public void Delete(String username, Date date, Time time) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Appointment " +
+                    "WHERE Appointment.withperson = ? " +
+                    "AND Appointment.date_meeting = ? " +
+                    "AND Appointment.time_meeting = ?"
+            );
+            preparedStatement.setString(1, username);
+            preparedStatement.setDate(2, date);
+            preparedStatement.setTime(3, time);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @return List of All the Rows In Table

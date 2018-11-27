@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.Time;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import object.Appointment;
+import object.User;
 
 public class ModifyAppointmentViewController extends Controller implements Initializable {
 
@@ -59,6 +61,7 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     private void initAppList() {
         List<Appointment> list = AppointmentDOA.GetInstance().GetList();
         Collections.sort(list);
+        appointmentList.getItems().clear();
         for(Appointment app : list) {
             appointmentList.getItems().add(app.getDate() + " " + app.getWithperson());
         }
@@ -98,6 +101,16 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     }
 
     public void deleteApptBtn(ActionEvent event) {
-
+        AppointmentDOA.GetInstance().Delete(username.getText(), Date.valueOf(datePicker.getValue()), DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"));
+        for(Appointment app : User.GetInstance().getAppointments()) {
+            if(app.getWithperson().equals(username.getText()) &&
+                    app.getDate().equals(Date.valueOf(datePicker.getValue())) &&
+                    app.getTime().equals(DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"))) {
+                User.GetInstance().getAppointments().remove(app);
+                initAppList();
+                System.out.println("EXECUTED");
+                break;
+            }
+        }
     }
 }
