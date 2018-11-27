@@ -233,7 +233,8 @@ public class CalendarViewController extends CalendarController implements Initia
                     calendar.setTime(app.getDate());
                     if(calendar.get(Calendar.DAY_OF_MONTH) == Integer.parseInt(dateLabel.getText()) &&
                             calendar.get(Calendar.YEAR) == Integer.parseInt(year.getPromptText()) &&
-                            calendar.get(Calendar.MONTH) == CalendarHelper.getMonthFromString(month.getPromptText()) - 1) {
+                            calendar.get(Calendar.MONTH) == CalendarHelper.getMonthFromString(month.getPromptText()) - 1 &&
+                            !dateLabel.getStyle().equals("-fx-text-fill: gray")) {
                         appLabel.setText(app.getWithperson() + "\n" + DateTimeParser.getHourMinFromDate(app.getTime()));
                         appLabel.setStyle("-fx-text-fill: green");
                         break;
