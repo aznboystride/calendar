@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 
 import java.net.URL;
 import java.sql.Time;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -57,12 +58,14 @@ public class ModifyAppointmentViewController implements Initializable {
 
     private void initAppList() {
         List<Appointment> list = AppointmentDOA.GetInstance().GetList();
+        Collections.sort(list);
         for(Appointment app : list) {
             appointmentList.getItems().add(app.getDate() + " " + app.getWithperson());
         }
         Appointment a = list.get(0);
         appointmentList.setValue(a.getDate() + " " + a.getWithperson());
         username.setText(a.getWithperson());
+        username.setDisable(true);
         event.setText(a.getEventName());
         datePicker.setValue(a.getDate().toLocalDate());
         place.setText(a.getPlace());
