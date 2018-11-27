@@ -127,11 +127,11 @@ public class AppointmentDOA implements DelegationOfAuthority {
     public void Delete(Object o) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(String.format("DELETE FROM Appointment " +
-                    "WHERE Appointment.withperson = ", ((Appointment)o).getWithperson()));
+                    "WHERE Appointment.withperson = ", o.toString()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }g
 
     /**
      * @return List of All the Rows In Table
