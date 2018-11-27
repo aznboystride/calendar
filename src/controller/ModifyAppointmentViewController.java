@@ -18,7 +18,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import object.Appointment;
 
-public class ModifyAppointmentViewController implements Initializable {
+public class ModifyAppointmentViewController extends Controller implements Initializable {
 
     @FXML
     private ComboBox appointmentList;
@@ -82,19 +82,19 @@ public class ModifyAppointmentViewController implements Initializable {
     }
 
     public void modifyAccountBtn(ActionEvent event) {
-
+        LoadFXML(event, "Calendar App - Modify Account", "/fxml/ModifyAccountView.fxml");
     }
 
     public void signOffBtn(ActionEvent event) {
-
+        LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
     }
 
     public void changePasswordBtn(ActionEvent event) {
-
+        LoadFXML(event, "Calendar App - Change Password", "/fxml/ChangePasswordView.fxml");
     }
 
     public void calendarBtn(ActionEvent event) {
-
+        LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
     }
 
     public void deleteApptBtn(ActionEvent event) {
