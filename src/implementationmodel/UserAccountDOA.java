@@ -83,6 +83,37 @@ public class UserAccountDOA implements DelegationOfAuthority {
             }
         }
     }
+    
+    public void ChangeUsernameAndPassword(String oldUsername, String newUsername, String newPassword) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "UPDATE userAccount " +
+                            "SET username = ?, password = ? " + 
+                            "WHERE userAccount.username = ?"
+            );
+            preparedStatement.setString(1, newUsername);
+            preparedStatement.setString(2, newPassword);
+            preparedStatement.setString(3, oldUsername);
+            preparedStatement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void ChangeUsername(String oldUsername, String newUsername) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "UPDATE userAccount " +
+                            "SET username = ? " + 
+                            "WHERE userAccount.username = ?"
+            );
+            preparedStatement.setString(1, newUsername);
+            preparedStatement.setString(2, oldUsername);
+            preparedStatement.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void Update(Object o) {
@@ -140,6 +171,15 @@ public class UserAccountDOA implements DelegationOfAuthority {
         UserAccount userAccount = (UserAccount) o;
         for(UserAccount user: GetList()) {
             if(user.getUserName().equalsIgnoreCase(userAccount.getUserName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean Exists(String username) {
+        for(UserAccount user: GetList()) {
+            if(user.getUserName().equalsIgnoreCase(username)) {
                 return true;
             }
         }

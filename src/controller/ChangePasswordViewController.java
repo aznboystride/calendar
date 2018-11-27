@@ -35,21 +35,24 @@ public class ChangePasswordViewController extends Controller implements Initiali
      */
     public void updateBtn(ActionEvent event) {
         UserAccountDOA db = UserAccountDOA.GetInstance();
-        UserAccount newAccount = new UserAccount(username.getText());
         if(username.getText().length() == 0) {
             new AlertBox("Username Field Empty!");
             return;
         }
-        else if(!newAccount.getUserName().equalsIgnoreCase(User.GetInstance().getUserName())) {
-            if(db.Exists(newAccount)) {
+        else if(!username.getText().equalsIgnoreCase(User.GetInstance().getUserName())) {
+            if(db.Exists(username.getText())) {
                 new AlertBox("Username already exists!");
                 return;
             }
         }
         if(User.GetInstance().getPassword().equals(oldPass.getText())) {
             if(newPass.getText().equals(confirmPass.getText())) {
-                User.GetInstance().setPassword(newPass.getText());
-                db.ChangeUsernameAndPassword(User.GetInstance().getUserName(), username.getText(), newPass.getText());
+                if(newPass.getText().length() > 0) {
+                    User.GetInstance().setPassword(newPass.getText());
+                    db.ChangeUsernameAndPassword(User.GetInstance().getUserName(), username.getText(), newPass.getText());
+                } else {
+                    db.ChangeUsername(User.GetInstance().getUserName(), username.getText());
+                }
                 User.GetInstance().setUserName(username.getText());
                 LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
             } else {
