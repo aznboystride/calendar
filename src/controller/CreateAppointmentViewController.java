@@ -71,6 +71,10 @@ public class CreateAppointmentViewController extends Controller implements Initi
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initTime();
+    }
+
+    private void initTime() {
         Time twelveAM = DateTimeParser.parseTimeFromString("12:00 PM", "hh:mm a");
         time.getItems().add(DateTimeParser.getHourMinFromDate(twelveAM));
         for(int i = 0; i < 47; i++) {
