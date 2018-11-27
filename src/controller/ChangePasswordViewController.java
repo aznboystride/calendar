@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import object.AlertBox;
 import object.User;
-import object.UserAccount;
 
 /**
  * This controller is the one controlling the change password view

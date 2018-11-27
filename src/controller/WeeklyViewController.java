@@ -10,12 +10,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.geometry.HPos;
+import javafx.scene.control.ColorPicker;
 import object.Appointment;
 import object.User;
 
@@ -26,6 +26,9 @@ public class WeeklyViewController extends CalendarViewController {
 
     @FXML
     private ComboBox weekCombo;
+    
+    @FXML
+    private ColorPicker colorPicker;
 
     /**
      * Initializes weekly view gridpane
@@ -168,6 +171,15 @@ public class WeeklyViewController extends CalendarViewController {
      */
     public void signOffBtn(ActionEvent event) {
         LoadFXML(event, "Calendar App - Main Menu", "/fxml/MainMenuView.fxml");
+    }
+    
+    /**
+     * Color picker that allows user to change the color of calendar view
+     * @param event
+     */
+    @Override
+    public void setCalendarColor(ActionEvent event) {
+        gridPane.setStyle(String.format("-fx-background-color: #%s", Integer.toHexString(colorPicker.getValue().hashCode())));
     }
     
     @Override
