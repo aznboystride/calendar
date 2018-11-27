@@ -152,7 +152,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
                 sdate = sc.nextLine();
                 stime = sc.nextLine();
                 time = DateTimeParser.parseTimeFromString(stime, "hh:mm a");
-                date = DateTimeParser.parseDateFromString(sdate, "mm/dd/yyyy");
+                date = DateTimeParser.parseDateFromString(sdate, "MM/dd/yyyy");
                 appointmentList.add(new Appointment(date, time, place, event, username, withPerson));
             }
             return appointmentList;
