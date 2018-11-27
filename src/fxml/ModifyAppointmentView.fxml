@@ -47,7 +47,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-      <ComboBox fx:id="appointmentList" layoutX="432.0" layoutY="105.0" prefHeight="27.0" prefWidth="215.0" promptText="Appointment List" />
+      <ComboBox fx:id="appointmentList" layoutX="432.0" layoutY="105.0" onAction="#apptListBtn" prefHeight="27.0" prefWidth="215.0" promptText="Appointment List" />
       <Button layoutX="446.0" layoutY="333.0" mnemonicParsing="false" onAction="#deleteApptBtn" prefHeight="27.0" prefWidth="151.0" text="Delete Appointment" />
     </children>
 </AnchorPane>

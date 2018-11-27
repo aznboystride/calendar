@@ -113,6 +113,10 @@ public class Appointment implements Comparable<Appointment> {
                 "Time: " + time;
     }
 
+    public String getDateUser() {
+        return date.toString() + " " + withperson;
+    }
+
     @Override
     public int compareTo(Appointment o) {
         return date.compareTo(o.getDate());

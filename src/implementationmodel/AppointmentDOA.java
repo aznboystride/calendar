@@ -102,16 +102,13 @@ public class AppointmentDOA implements DelegationOfAuthority {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "UPDATE Appointment " +
-                            "SET withperson = ?, event = ?, place = ?, date_meeting = ?, " +
-                            "time_meeting = ? " +
+                            "SET withperson = ?, event = ?, place = ?" +
                             "WHERE Appointment.username = ?"
             );
             preparedStatement.setString(1, app.getWithperson());
             preparedStatement.setString(2, app.getEventName());
             preparedStatement.setString(3, app.getPlace());
-            preparedStatement.setDate(4, app.getDate());
-            preparedStatement.setTime(5, app.getTime());
-            preparedStatement.setString(6, app.getUsername());
+            preparedStatement.setString(4, app.getUsername());
             preparedStatement.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
