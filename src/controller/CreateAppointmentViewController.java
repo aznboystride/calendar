@@ -50,7 +50,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
     public void createAppointmentBtn(ActionEvent e) {
         Appointment appointment = new Appointment(
                 Date.valueOf(datePicker.getValue()),
-                new Time(System.currentTimeMillis()),
+                DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"),
                 place.getText(),
                 event.getText(),
                 User.GetInstance().getUserName(),
@@ -71,7 +71,12 @@ public class CreateAppointmentViewController extends Controller implements Initi
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        Time twelveAM = DateTimeParser.parseTimeFromString("12:00 PM", "hh:mm a");
+        time.getItems().add(DateTimeParser.getHourMinFromDate(twelveAM));
+        for(int i = 0; i < 47; i++) {
+            twelveAM = new Time(twelveAM.getTime() + 1000 * 60 * 30);
+            time.getItems().add(DateTimeParser.getHourMinFromDate(twelveAM));
+        }
     }
 
     /**
