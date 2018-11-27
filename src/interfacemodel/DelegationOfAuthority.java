@@ -27,6 +27,12 @@ public interface DelegationOfAuthority<Type> {
     void Update(Type o);
 
     /**
+     * Delete Row In Table
+     * @param o
+     */
+    void Delete(Type o);
+
+    /**
      *
      * @return List of All the Rows In Table
      */

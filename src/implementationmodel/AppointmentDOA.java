@@ -119,6 +119,21 @@ public class AppointmentDOA implements DelegationOfAuthority {
     }
 
     /**
+     * Delete Row In Table
+     *
+     * @param o
+     */
+    @Override
+    public void Delete(Object o) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(String.format("DELETE FROM Appointment " +
+                    "WHERE Appointment.withperson = ", ((Appointment)o).getWithperson()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * @return List of All the Rows In Table
      */
     @Override

@@ -138,6 +138,16 @@ public class UserAccountDOA implements DelegationOfAuthority {
         }
     }
 
+    /**
+     * Delete Row In Table
+     *
+     * @param o
+     */
+    @Override
+    public void Delete(Object o) {
+
+    }
+
     @Override
     public List<UserAccount> GetList() {
         List<UserAccount> list = new ArrayList<>();
