@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Objects;
 
-public class Appointment {
+public class Appointment implements Comparable<Appointment> {
 
     private Date date;
 
@@ -111,5 +111,10 @@ public class Appointment {
                 "Place: " + place + "\n" +
                 "Date: " + date + "\n" +
                 "Time: " + time;
+    }
+
+    @Override
+    public int compareTo(Appointment o) {
+        return date.compareTo(o.getDate());
     }
 }
