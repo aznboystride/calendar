@@ -104,6 +104,6 @@ public class ModifyAccountViewController extends Controller implements Initializ
     }
 
     public void modifyApptBtn(ActionEvent event) {
-        LoadFXML(event, "Calendar App - Modify Appomentsint", "/fxml/ModifyAppointmentView.fxml");
+        LoadFXML(event, "Calendar App - Modify Appointments", "/fxml/ModifyAppointmentView.fxml");
     }
 }

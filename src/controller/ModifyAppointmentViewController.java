@@ -3,6 +3,7 @@ package controller;
 
 import helper.DateTimeParser;
 import implementationmodel.AppointmentDOA;
+import implementationmodel.UserAccountDOA;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,8 +41,22 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     @FXML
     private ComboBox time;
 
-    public void modifyAppointmentBtn(ActionEvent event) {
-
+    public void modifyAppointmentBtn(ActionEvent events) {
+        List<Appointment> list = User.GetInstance().getAppointments();
+        for(Appointment a : list) {
+            if(a.getWithperson().equals(username.getText()) &&
+                    a.getEventName().equals(event.getText()) &&
+                    a.getPlace().equals(place.getText())) {
+                list.get(list.indexOf(a)).setDate(Date.valueOf(datePicker.getValue()));
+                list.get(list.indexOf(a)).setTime(DateTimeParser.parseTimeFromString(
+                        time.getValue().toString(), "hh:mm a")
+                );
+                AppointmentDOA.GetInstance().Update(list.get(list.indexOf(a)));
+                UserAccountDOA.GetInstance().Update(User.GetInstance());
+                initAppList();
+                break;
+            }
+        }
     }
 
     /**
