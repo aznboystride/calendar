@@ -48,13 +48,12 @@ public class ModifyAppointmentViewController extends Controller implements Initi
             if(a.getWithperson().equals(username.getText()) &&
                     a.getEventName().equals(event.getText()) &&
                     a.getPlace().equals(place.getText())) {
-                list.get(list.indexOf(a)).setDate(Date.valueOf(datePicker.getValue()));
-                list.get(list.indexOf(a)).setTime(DateTimeParser.parseTimeFromString(
+                a.setDate(Date.valueOf(datePicker.getValue()));
+                a.setTime(DateTimeParser.parseTimeFromString(
                         time.getValue().toString(), "hh:mm a")
                 );
-                AppointmentDOA.GetInstance().Update(list.get(list.indexOf(a)));
+                AppointmentDOA.GetInstance().Update(a);
                 UserAccountDOA.GetInstance().Update(User.GetInstance());
-                initAppList();
                 break;
             }
         }
@@ -75,7 +74,7 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     }
 
     private void initAppList() {
-        List<Appointment> list = AppointmentDOA.GetInstance().GetList();
+        List<Appointment> list = User.GetInstance().getAppointments();
         Collections.sort(list);
         appointmentList.getItems().clear();
         for(Appointment app : list) {
@@ -134,11 +133,8 @@ public class ModifyAppointmentViewController extends Controller implements Initi
 
     public void apptListBtn(ActionEvent events) {
         for(Appointment app : User.GetInstance().getAppointments()) {
-            if(app.getDateUser().equals(appointmentList.getValue().toString())) {
-                System.out.println("THIS IS: " + app.getWithperson());
-                username.setText(app.getWithperson());
-                event.setText(app.getEventName());
-                place.setText(app.getPlace());
+            if(app.getWithperson().equals(username.getText()) && app.getPlace().equals(place.getText()) &&
+                    app.getEventName().equals(event.getText())) {
                 datePicker.setValue(app.getDate().toLocalDate());
                 time.setValue(app.getTime());
                 break;
