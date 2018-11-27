@@ -20,6 +20,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import object.Appointment;
 import object.User;
+import object.UserAccount;
 
 public class ModifyAppointmentViewController extends Controller implements Initializable {
 
@@ -124,6 +125,7 @@ public class ModifyAppointmentViewController extends Controller implements Initi
                     app.getDate().equals(Date.valueOf(datePicker.getValue())) &&
                     app.getTime().equals(DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"))) {
                 User.GetInstance().getAppointments().remove(app);
+                UserAccountDOA.GetInstance().Update(User.GetInstance());
                 initAppList();
                 break;
             }
