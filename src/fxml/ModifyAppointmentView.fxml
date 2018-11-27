@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifyAppointmentViewController">
+    <children>
+        <Label layoutX="206.0" layoutY="43.0" prefHeight="38.0" prefWidth="215.0" text="Modify Appointment" textFill="#1e19c2">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="176.0" layoutY="110.0" text="Event" />
+        <Label layoutX="176.0" layoutY="152.0" text="Person" />
+        <Label layoutX="176.0" layoutY="200.0" text="Date" />
+        <Button layoutX="241.0" layoutY="333.0" mnemonicParsing="false" onAction="#modifyAppointmentBtn" text="Modify Appointment" />
+        <TextField fx:id="event" layoutX="230.0" layoutY="105.0" promptText="event name" />
+        <TextField fx:id="username" layoutX="230.0" layoutY="147.0" promptText="person's username" />
+        <Label layoutX="178.0" layoutY="292.0" text="Time" />
+        <DatePicker fx:id="datePicker" layoutX="229.0" layoutY="195.0" prefHeight="27.0" prefWidth="167.0" promptText="mm/dd/yyyy" />
+        <ComboBox fx:id="time" layoutX="230.0" layoutY="287.0" prefHeight="27.0" prefWidth="167.0" promptText="1:00 PM" />
+        <Label layoutX="177.0" layoutY="247.0" text="Place" />
+        <TextField fx:id="place" layoutX="229.0" layoutY="242.0" promptText="place" />
+        <MenuBar prefHeight="29.0" prefWidth="700.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#modifyAccountBtn" text="Modify Account" />
+                        <MenuItem mnemonicParsing="false" onAction="#signOffBtn" text="Sign Off" />
+                        <MenuItem mnemonicParsing="false" onAction="#changePasswordBtn" text="Change Password" />
+                        <MenuItem mnemonicParsing="false" onAction="#calendarBtn" text="Calendar" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+      <ComboBox fx:id="appointmentList" layoutX="432.0" layoutY="105.0" prefHeight="27.0" prefWidth="215.0" promptText="Appointment List" />
+      <Button layoutX="446.0" layoutY="333.0" mnemonicParsing="false" onAction="#deleteApptBtn" prefHeight="27.0" prefWidth="151.0" text="Delete Appointment" />
+    </children>
+</AnchorPane>
