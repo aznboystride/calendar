@@ -128,8 +128,6 @@ public class ModifyAppointmentViewController extends Controller implements Initi
                 break;
             }
         }
-        System.out.println("PRINTING INFORMATION");
-        System.out.println(User.GetInstance());
     }
 
     public void apptListBtn(ActionEvent events) {
