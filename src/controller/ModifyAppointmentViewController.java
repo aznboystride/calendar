@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -120,15 +121,15 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     public void deleteApptBtn(ActionEvent event) {
         AppointmentDOA.GetInstance().Delete(username.getText(), Date.valueOf(datePicker.getValue()), DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"));
         for(Appointment app : User.GetInstance().getAppointments()) {
-            if(app.getWithperson().equals(username.getText()) &&
-                    app.getDate().equals(Date.valueOf(datePicker.getValue())) &&
-                    app.getTime().equals(DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"))) {
+            if(app.getDateUser().equals(appointmentList.getValue().toString())) {
                 User.GetInstance().getAppointments().remove(app);
-                UserAccountDOA.GetInstance().Update(User.GetInstance());
-                initAppList();
+                appointmentList.getItems().remove(app.getDateUser());
+                appointmentList.setValue(appointmentList.getItems().get(0));
                 break;
             }
         }
+        System.out.println("PRINTING INFORMATION");
+        System.out.println(User.GetInstance());
     }
 
     public void apptListBtn(ActionEvent events) {
