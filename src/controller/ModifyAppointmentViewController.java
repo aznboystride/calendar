@@ -81,7 +81,7 @@ public class ModifyAppointmentViewController extends Controller implements Initi
             appointmentList.getItems().add(app.getDateUser());
         }
         Appointment a = list.get(0);
-        appointmentList.setValue(a.getDate() + " " + a.getWithperson());
+        appointmentList.setValue(a.getDateUser());
         username.setText(a.getWithperson());
         username.setDisable(true);
         event.setText(a.getEventName());
@@ -132,11 +132,20 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     }
 
     public void apptListBtn(ActionEvent events) {
-        for(Appointment app : User.GetInstance().getAppointments()) {
-            if(app.getWithperson().equals(username.getText()) && app.getPlace().equals(place.getText()) &&
-                    app.getEventName().equals(event.getText())) {
-                datePicker.setValue(app.getDate().toLocalDate());
-                time.setValue(app.getTime());
+        String val = appointmentList.getValue().toString();
+        int firstSpaceIndex = val.indexOf(' ');
+        int secondSpaceIndex = val.indexOf(' ',firstSpaceIndex + 1);
+        int thirdSpaceIndex = val.indexOf(' ', secondSpaceIndex + 1);
+        Date date = DateTimeParser.parseDateFromString(val.substring(0, firstSpaceIndex), "yyyy-MM-dd");
+        Time _time = DateTimeParser.parseTimeFromString(val.substring(secondSpaceIndex + 1, thirdSpaceIndex), "hh:mm a");
+        String name = val.substring(thirdSpaceIndex + 1, val.length());
+        datePicker.setValue(date.toLocalDate());
+        time.setValue(DateTimeParser.getHourMinFromDate(_time));
+        username.setText(name);
+        for(Appointment a : User.GetInstance().getAppointments()) {
+            if(a.getDate().equals(date) && a.getTime().equals(_time) && name.equals(a.getWithperson())) {
+                event.setText(a.getEventName());
+                place.setText(a.getPlace());
                 break;
             }
         }
