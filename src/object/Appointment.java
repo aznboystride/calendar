@@ -1,5 +1,7 @@
 package object;
 
+import helper.DateTimeParser;
+
 import java.sql.Time;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -114,7 +116,7 @@ public class Appointment implements Comparable<Appointment> {
     }
 
     public String getDateUser() {
-        return date.toString() + " " + withperson;
+        return date.toString() + " " + DateTimeParser.getHourMinFromDate(time) + " " + withperson;
     }
 
     @Override

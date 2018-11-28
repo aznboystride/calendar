@@ -134,11 +134,9 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     public void apptListBtn(ActionEvent events) {
         String val = appointmentList.getValue().toString();
         int firstSpaceIndex = val.indexOf(' ');
-        int secondSpaceIndex = val.indexOf(' ',firstSpaceIndex + 1);
-        int thirdSpaceIndex = val.indexOf(' ', secondSpaceIndex + 1);
         Date date = DateTimeParser.parseDateFromString(val.substring(0, firstSpaceIndex), "yyyy-MM-dd");
-        Time _time = DateTimeParser.parseTimeFromString(val.substring(secondSpaceIndex + 1, thirdSpaceIndex), "hh:mm a");
-        String name = val.substring(thirdSpaceIndex + 1, val.length());
+        Time _time = DateTimeParser.parseTimeFromString(val.substring(firstSpaceIndex+1, val.lastIndexOf(' ')), "hh:mm a");
+        String name = val.substring(val.lastIndexOf(' ') + 1, val.length());
         datePicker.setValue(date.toLocalDate());
         time.setValue(DateTimeParser.getHourMinFromDate(_time));
         username.setText(name);
