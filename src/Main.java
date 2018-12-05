@@ -54,9 +54,9 @@ public class Main extends Application {
                         continue;
                     if (app.getUsername().equals(username)) {
                         if (app.getTime().getTime() - System.currentTimeMillis() < app.getReminder().getTime()) {
-                            from = "peynuri@yahoo.com";
+                            from = "MY EMAIL";
                             to = User.GetInstance().getEmail();
-                            pass = "S6flipto!@#";
+                            pass = "MY PASSWORD";
                             sub = "Appointment Reminder With: " + app.getWithperson();
                             body = app.getDate() + " @ " + DateTimeParser.getHourMinFromDate(app.getTime());
                             Email.sendEmail(from, pass, to, sub, body);
