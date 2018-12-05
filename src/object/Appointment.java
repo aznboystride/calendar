@@ -21,6 +21,16 @@ public class Appointment implements Comparable<Appointment> {
 
     private String withperson;
 
+    private Time reminder;
+
+    public Time getReminder() {
+        return reminder;
+    }
+
+    public void setReminder(Time reminder) {
+        this.reminder = reminder;
+    }
+
     public Appointment() {
 
     }
@@ -97,12 +107,14 @@ public class Appointment implements Comparable<Appointment> {
 
     public Appointment(Date date, Time time, String place, String eventName, String username, String withperson)
     {
+        long one_hourms = 1000*3600;
         this.date = date;
         this.time = time;
         this.place = place;
         this.eventName = eventName;
         this.username = username;
         this.withperson = withperson;
+        this.reminder = new Time(time.getTime() - one_hourms);
     }
 
     @Override
