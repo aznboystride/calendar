@@ -12,7 +12,6 @@ import javafx.scene.control.ComboBox;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -21,7 +20,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import object.Appointment;
 import object.User;
-import object.UserAccount;
 
 public class ModifyAppointmentViewController extends Controller implements Initializable {
 
