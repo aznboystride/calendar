@@ -39,15 +39,4 @@ public class Email {
         }
 
     }
-
-    public static void main(String[]args) {
-        System.out.println("Sending Email...");
-        String pass = "S6flipto!@#";
-        String user = "peynuri@yahoo.com";
-        String to = "Fairnuri.aboshehwa@student.csulb.edu";
-        String subject = "Test Subject";
-        String body = "This is\nthe body\nof the message";
-        Email.sendEmail(user, pass, to, subject, body);
-        System.out.println("Email sent!");
-    }
 }
