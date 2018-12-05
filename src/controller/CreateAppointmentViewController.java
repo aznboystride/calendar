@@ -49,7 +49,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
      * @param e
      */
     public void createAppointmentBtn(ActionEvent e) {
-        Appointment appointment = new Appointment(
+        Appointment gappointment = new Appointment(
                 Date.valueOf(datePicker.getValue()),
                 DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"),
                 place.getText(),
@@ -57,12 +57,12 @@ public class CreateAppointmentViewController extends Controller implements Initi
                 User.GetInstance().getUserName(),
                 username.getText()
         );
-        if(appointment.getDate().compareTo(Date.valueOf(datePicker.getValue())) == 0 &&
-                new Time(appointment.getTime().getTime() - 1000 * 60 * 30).getTime() < appointment.getTime().getTime() &&
-                appointment.getTime().getTime() < new Time(appointment.getTime().getTime() + 1000 * 60 * 60).getTime()) {
-            new AlertBox("Appointment is too close to existing appointment!");
-            return;
-        }
+//        if(appointment.getDate().compareTo(Date.valueOf(datePicker.getValue())) == 0 &&
+//                new Time(appointment.getTime().getTime() - 1000 * 60 * 30).getTime() < appointment.getTime().getTime() &&
+//                appointment.getTime().getTime() < new Time(appointment.getTime().getTime() + 1000 * 60 * 60).getTime()) {
+//            new AlertBox("Appointment is too close to existing appointment!");
+//            return;
+//        }
         User.GetInstance().createAppointment(appointment);
         AppointmentDOA.GetInstance().Insert(appointment);
     }
