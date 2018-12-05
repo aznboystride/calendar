@@ -49,7 +49,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
      * @param e
      */
     public void createAppointmentBtn(ActionEvent e) {
-        Appointment gappointment = new Appointment(
+        Appointment appointment = new Appointment(
                 Date.valueOf(datePicker.getValue()),
                 DateTimeParser.parseTimeFromString(time.getValue().toString(), "hh:mm a"),
                 place.getText(),
