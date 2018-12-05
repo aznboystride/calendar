@@ -82,7 +82,6 @@ public class ModifyAppointmentViewController extends Controller implements Initi
             appointmentList.getItems().add(app.getDateUser());
         }
         Appointment a = list.get(0);
-        appointmentList.setValue(a.getDateUser());
         username.setText(a.getWithperson());
         username.setDisable(true);
         event.setText(a.getEventName());
@@ -131,7 +130,7 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     }
 
     public void apptListBtn(ActionEvent events) {
-        String val = appointmentList.getValue().toString();
+        String val = appointmentList.getItems().get(0).toString();
         int firstSpaceIndex = val.indexOf(' ');
         Date date = DateTimeParser.parseDateFromString(val.substring(0, firstSpaceIndex), "yyyy-MM-dd");
         Time _time = DateTimeParser.parseTimeFromString(val.substring(firstSpaceIndex+1, val.lastIndexOf(' ')), "hh:mm a");
