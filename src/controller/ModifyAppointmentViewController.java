@@ -41,6 +41,9 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     @FXML
     private ComboBox time;
 
+    @FXML
+    private ComboBox timeReminder;
+
     public void modifyAppointmentBtn(ActionEvent events) {
         List<Appointment> list = User.GetInstance().getAppointments();
         for(Appointment a : list) {
@@ -69,7 +72,15 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initTime();
+        initTimeReminder();
         initAppList();
+    }
+
+    private void initTimeReminder() {
+        for(int i = 1; i <= 24; i++) {
+            timeReminder.getItems().add(i + " hr before");
+        }
+        timeReminder.setValue(timeReminder.getItems().get(0));
     }
 
     private void initAppList() {
