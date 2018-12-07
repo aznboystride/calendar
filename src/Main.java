@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import object.Appointment;
 import object.User;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
@@ -53,10 +54,15 @@ public class Main extends Application {
                     if (alreadyEmailed.contains(app))
                         continue;
                     if (app.getUsername().equals(username)) {
-                        if (app.getTime().getTime() - System.currentTimeMillis() < app.getReminder().getTime()) {
-                            from = "MY EMAIL";
+                        if (app.getTime().getTime() - System.currentTimeMillis() < app.getReminder().getTime()
+                                && app.getDate().getYear() == new Date(System.currentTimeMillis()).getYear()
+                                && app.getDate().getDate() == new Date(System.currentTimeMillis()).getDate()) {
+                            System.out.println("Reminder time: " + app.getReminder());
+                            System.out.println("Current App time: " + app.getTime());
+                            from = "EMAIL ADDRESS";
                             to = User.GetInstance().getEmail();
-                            pass = "MY PASSWORD";
+                            System.out.println("Emailing: " + to);
+                            pass = "PASSWORD";
                             sub = "Appointment Reminder With: " + app.getWithperson();
                             body = app.getDate() + " @ " + DateTimeParser.getHourMinFromDate(app.getTime());
                             Email.sendEmail(from, pass, to, sub, body);

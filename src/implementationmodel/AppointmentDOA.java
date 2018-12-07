@@ -130,6 +130,20 @@ public class AppointmentDOA implements DelegationOfAuthority {
         }
     }
 
+
+    public void Delete(String username) {
+        while(Exist(username)) {
+            try {
+                System.out.println(username);
+                PreparedStatement preparedStatement = connection.prepareStatement(String.format("DELETE FROM Appointment " +
+                        "WHERE Appointment.username = '%s'", username));
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void Delete(String username, Date date, Time time) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Appointment " +
@@ -186,6 +200,15 @@ public class AppointmentDOA implements DelegationOfAuthority {
         Appointment appointment = (Appointment) o;
         for(Appointment app: (List<Appointment>) GetList()) {
             if(app.getUsername().equalsIgnoreCase(app.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean Exist(String username) {
+        for(Appointment app: (List<Appointment>) GetList()) {
+            if(app.getUsername().equalsIgnoreCase(username)) {
                 return true;
             }
         }
