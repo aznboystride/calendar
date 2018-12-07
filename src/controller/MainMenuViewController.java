@@ -56,7 +56,7 @@ public class MainMenuViewController extends Controller {
             if(user.getUserName().equalsIgnoreCase(username.getText().trim())) {
                 if(user.getPassword().equals(password.getText())) {
                     User.GetInstance().setUserAccount(user);
-                    User.GetInstance().setAppointments((ArrayList<Appointment>) AppointmentDOA.GetInstance().GetList());
+                    User.GetInstance().setAppointments((ArrayList<Appointment>) GetUserAppointments(user.getUserName()));
                     System.out.println(User.GetInstance());
                     LoadFXML(event, "Calendar App - CalendarView", "/fxml/CalendarView.fxml");
                     return;
@@ -65,6 +65,16 @@ public class MainMenuViewController extends Controller {
             }
         }
         new AlertBox("username or password incorrect");
+    }
+
+    private List<Appointment> GetUserAppointments(String username) {
+        List<Appointment> userAppts = new ArrayList<>();
+        List<Appointment> list = AppointmentDOA.GetInstance().GetList();
+        for(Appointment appointment : list) {
+            if(appointment.getUsername().equalsIgnoreCase(username))
+                userAppts.add(appointment);
+        }
+        return userAppts;
     }
 
     /**

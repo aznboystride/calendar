@@ -57,12 +57,13 @@ public class CreateAppointmentViewController extends Controller implements Initi
                 User.GetInstance().getUserName(),
                 username.getText()
         );
-//        if(appointment.getDate().compareTo(Date.valueOf(datePicker.getValue())) == 0 &&
-//                new Time(appointment.getTime().getTime() - 1000 * 60 * 30).getTime() < appointment.getTime().getTime() &&
-//                appointment.getTime().getTime() < new Time(appointment.getTime().getTime() + 1000 * 60 * 60).getTime()) {
-//            new AlertBox("Appointment is too close to existing appointment!");
-//            return;
-//        }
+        List<Appointment> list = User.GetInstance().getAppointments();
+        for(Appointment app : list) {
+            if(app.getDate().compareTo(appointment.getDate()) == 0 && app.getDate().getYear() == appointment.getDate().getYear()) {
+                new AlertBox("Appointment is too close to existing appointment!");
+                return;
+            }
+        }
         User.GetInstance().createAppointment(appointment);
         AppointmentDOA.GetInstance().Insert(appointment);
     }
@@ -88,6 +89,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
             twelveAM = new Time(twelveAM.getTime() + 1000 * 60 * 30);
             time.getItems().add(DateTimeParser.getHourMinFromDate(twelveAM));
         }
+        time.setValue(time.getItems().get(0));
     }
 
     /**
@@ -125,7 +127,7 @@ public class CreateAppointmentViewController extends Controller implements Initi
     public void importScheduleBtn(ActionEvent event) {
         File selectedFile = FileHelper.ChooseFileOpen(event);
         if(selectedFile != null) {
-            AppointmentDOA.GetInstance().DropTable();
+            AppointmentDOA.GetInstance().Delete(User.GetInstance().getUserName());
             List<Appointment> appointmentList = parseAppointmentsFromFile(selectedFile);
             for(Appointment app : appointmentList) {
                 AppointmentDOA.GetInstance().Insert(app);
