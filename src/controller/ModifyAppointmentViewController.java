@@ -56,6 +56,8 @@ public class ModifyAppointmentViewController extends Controller implements Initi
                 );
                 AppointmentDOA.GetInstance().Update(a);
                 UserAccountDOA.GetInstance().Update(User.GetInstance());
+                String remStr = timeReminder.getValue().toString();
+                a.setReminder(new Time(a.getTime().getTime() - 1000 * 3600 * Integer.parseInt(remStr.substring(0, remStr.indexOf(' ')))));
                 break;
             }
         }
@@ -78,7 +80,7 @@ public class ModifyAppointmentViewController extends Controller implements Initi
 
     private void initTimeReminder() {
         for(int i = 1; i <= 24; i++) {
-            timeReminder.getItems().add(i + " hr before");
+            timeReminder.getItems().add(i + " hr_before");
         }
         timeReminder.setValue(timeReminder.getItems().get(0));
     }
@@ -139,7 +141,12 @@ public class ModifyAppointmentViewController extends Controller implements Initi
     }
 
     public void apptListBtn(ActionEvent events) {
-        String val = appointmentList.getItems().get(0).toString();
+        String val = "";
+        try {
+            val = appointmentList.getValue().toString();
+        } catch (Exception e) {
+            val = appointmentList.getItems().get(0).toString();
+        }
         int firstSpaceIndex = val.indexOf(' ');
         Date date = DateTimeParser.parseDateFromString(val.substring(0, firstSpaceIndex), "yyyy-MM-dd");
         Time _time = DateTimeParser.parseTimeFromString(val.substring(firstSpaceIndex+1, val.lastIndexOf(' ')), "hh:mm a");

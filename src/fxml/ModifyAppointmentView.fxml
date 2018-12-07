@@ -49,5 +49,7 @@
         </MenuBar>
       <ComboBox fx:id="appointmentList" layoutX="432.0" layoutY="105.0" onAction="#apptListBtn" prefHeight="27.0" prefWidth="215.0" promptText="Appointment List" />
       <Button layoutX="446.0" layoutY="333.0" mnemonicParsing="false" onAction="#deleteApptBtn" prefHeight="27.0" prefWidth="151.0" text="Delete Appointment" />
+      <ComboBox fx:id="timeReminder" layoutX="447.0" layoutY="287.0" prefWidth="150.0" />
+      <Label layoutX="452.0" layoutY="261.0" text="Appointment Reminder" />
     </children>
 </AnchorPane>
